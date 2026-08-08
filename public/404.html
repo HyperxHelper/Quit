@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quit — Start your comeback</title>
+    <script>
+      // GitHub Pages SPA fallback for client-side routing: unknown deep links
+      // resolve back to the app root, where the router takes over.
+      sessionStorage.setItem("quit.redirect", location.href)
+      location.replace("./index.html" + location.hash)
+    </script>
+  </head>
+  <body></body>
+</html>
