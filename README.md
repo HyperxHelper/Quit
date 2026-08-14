@@ -8,6 +8,10 @@
 </p>
 
 <p align="center">
+  <img src="media/badge.svg" alt="Quit Initiative" />
+</p>
+
+<p align="center">
   <strong>v0.15 — mobile-first preview.</strong> This copy lives on GitHub so you can explore
   and try everything before it ships for real. A <strong>full membership is coming soon</strong>.
   Until then: use <strong>Anonymous mode</strong> and your progress stays on your device.
@@ -29,6 +33,12 @@ Most "quit" apps sell willpower myths. Quit does the opposite:
 - **The Academy** — videos, articles and materials that build resistance to each
   type of addiction before the urge lands.
 - **A community** — student circles, creator streams, live accountability (Phase 3).
+- **Seek help** — a support hub with 1-tap crisis lines for Tunisia (ATPS, Razi,
+  UNICEF) and the US & Canada (988), WHO-sourced mental-health content, and
+  members who got help. Member stories are **mockup details** for now — real
+  stories arrive with the **real-accounts feature**, which is coming soon.
+  The story data lives in `src/data/member-stories.ts`, the single source ready
+  for backup/live integration.
 - **100% free for students.** Product donations never change that.
 - **Dark mode** — built on theme tokens, so the app is as comfortable at 2am as
   it is in daylight.
@@ -60,6 +70,7 @@ An open stack, an honest team:
 | **My plan** | Pick the one habit to quit, set a start date, get savings estimate |
 | **Science** | Peer-reviewed sources made readable for a student |
 | **Community** | Student circles, creator streams, live accountability (Phase 3) |
+| **Help** | Seek-help hub — crisis lines, WHO stats and member stories (mockup details until real accounts ship) |
 | **Profile** | Identity, settings, Academy, Clothing and sign-out in one place |
 | **Academy** | Video + article lessons that build resistance, type by type |
 | **Clothing** | Student-only merch that makes quitting visible |
@@ -97,6 +108,7 @@ src/
   components/     # shadcn/ui components + layout pieces (navbar, footer, sponsor, sources)
   pages/          # one file per route
   lib/            # auth, zod schemas, addiction helpers
+  data/           # data sources ready for backup/live integration (e.g. member-stories)
   assets/         # static brand assets
 ```
 
