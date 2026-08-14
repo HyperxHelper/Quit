@@ -3,6 +3,7 @@ import { Navigate, NavLink, Outlet, Link, useNavigate } from "react-router-dom"
 import {
   BookOpen,
   GraduationCap,
+  HeartHandshake,
   LayoutDashboard,
   LogOut,
   Shirt,
@@ -23,6 +24,7 @@ import { cn } from "@/lib/utils"
 const sidebarNav = [
   { to: "/app", label: "Home", icon: LayoutDashboard },
   { to: "/app/plan", label: "My plan", icon: Target },
+  { to: "/app/help", label: "Seek help", icon: HeartHandshake },
   { to: "/app/science", label: "Science library", icon: BookOpen },
   { to: "/app/academy", label: "Academy", icon: GraduationCap },
   { to: "/app/clothing", label: "Clothing", icon: Shirt },

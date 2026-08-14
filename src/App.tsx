@@ -15,6 +15,7 @@ import { AcademyPage } from "@/pages/academy"
 import { ClothingPage } from "@/pages/clothing"
 import { SettingsPage } from "@/pages/settings"
 import { ProfilePage } from "@/pages/profile"
+import { HelpPage } from "@/pages/help"
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/app" element={<AppShell />}>
             <Route index element={<DashboardPage />} />
             <Route path="plan" element={<PlanPage />} />
+            <Route path="help" element={<HelpPage />} />
             <Route path="science" element={<SciencePage />} />
             <Route path="community" element={<CommunityPage />} />
             <Route path="academy" element={<AcademyPage />} />
