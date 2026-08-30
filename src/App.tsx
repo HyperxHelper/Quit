@@ -16,6 +16,7 @@ import { ClothingPage } from "@/pages/clothing"
 import { SettingsPage } from "@/pages/settings"
 import { ProfilePage } from "@/pages/profile"
 import { HelpPage } from "@/pages/help"
+import { VolunteerPage } from "@/pages/volunteer"
 
 export default function App() {
   return (
@@ -37,6 +38,7 @@ export default function App() {
             <Route path="clothing" element={<ClothingPage />} />
             <Route path="settings" element={<SettingsPage />} />
             <Route path="profile" element={<ProfilePage />} />
+            <Route path="volunteer" element={<VolunteerPage />} />
           </Route>
 
           <Route path="*" element={<Navigate to="/" replace />} />

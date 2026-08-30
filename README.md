@@ -19,6 +19,11 @@
 
 ---
 
+> **Note:** Quit is still under active development. The product, its features, and
+> its pricing are not final. Some services that are currently free may include a fee
+> in the future. Everything shown here is a preview and subject to change before
+> launch.
+
 ## The Mission
 
 Addiction — smoking, vaping, doom-scrolling, cannabis, gambling, gaming, junk
@@ -39,12 +44,13 @@ Most "quit" apps sell willpower myths. Quit does the opposite:
   stories arrive with the **real-accounts feature**, which is coming soon.
   The story data lives in `src/data/member-stories.ts`, the single source ready
   for backup/live integration.
-- **100% free for students.** Product donations never change that.
+- **Global Volunteer Program** — join the Quit Initiative as a volunteer. Peer
+  support, campus outreach, and content creation roles across 6 countries.
 - **Dark mode** — built on theme tokens, so the app is as comfortable at 2am as
   it is in daylight.
 
-> “A failure to quit is not a failure of the person. Relapse is a data point,
-> not a verdict.” — the Quit mindset
+> "A failure to quit is not a failure of the person. Relapse is a data point,
+> not a verdict." — the Quit mindset
 
 ## Try it — Anonymous mode first.
 
@@ -70,6 +76,7 @@ An open stack, an honest team:
 | **My plan** | Pick the one habit to quit, set a start date, get savings estimate |
 | **Science** | Peer-reviewed sources made readable for a student |
 | **Community** | Student circles, creator streams, live accountability (Phase 3) |
+| **Global Volunteer Program** | Apply to volunteer — peer support, campus outreach, content creation across 6 countries |
 | **Help** | Seek-help hub — crisis lines, WHO stats and member stories (mockup details until real accounts ship) |
 | **Profile** | Identity, settings, Academy, Clothing and sign-out in one place |
 | **Academy** | Video + article lessons that build resistance, type by type |

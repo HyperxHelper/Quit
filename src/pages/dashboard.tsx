@@ -155,7 +155,7 @@ export function DashboardPage() {
           </CardHeader>
           <CardContent className="space-y-3">
             <p className="text-sm leading-relaxed">{dailyPrompt(streak)}</p>
-            <Button size="sm" className="gap-1.5">
+            <Button size="sm" className="gap-1.5" onClick={() => toast.success("Nice — today checked in as clean.")}>
               <CalendarCheck className="size-4" /> Mark today as clean
             </Button>
           </CardContent>
@@ -245,6 +245,7 @@ function RegainedRow({ label, value }: { label: string; value: string }) {
 }
 
 function atPct(streak: number) {
+  if (streak >= (milestones[milestones.length - 1] ?? 66)) return 100
   const next = milestones.find((m) => m > streak) ?? 1
   const prev = (milestones.filter((m) => m <= streak).pop() ?? 0)
   return Math.min(100, Math.round(((streak - prev) / (next - prev)) * 100))

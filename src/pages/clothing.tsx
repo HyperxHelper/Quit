@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import {
   ArrowRight,
   ShoppingBag,
@@ -87,9 +88,9 @@ export function ClothingPage() {
           </div>
         </div>
         <Button variant="outline" asChild>
-          <a href={user ? "#" : "/signup"} className="gap-1.5">
+          <Link to={user ? "#" : "/signup"} className="gap-1.5">
             Browse the shop <ArrowRight className="size-4" />
-          </a>
+          </Link>
         </Button>
       </div>
 

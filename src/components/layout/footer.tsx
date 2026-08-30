@@ -105,7 +105,7 @@ export function Footer() {
                 <Sparkles className="size-4 text-primary" /> Anonymous mode
               </li>
               <li className="flex items-center gap-2">
-                <LockIcon /> Encrypted future-proofing
+                <LockIcon className="size-4 text-primary" /> Encrypted future-proofing
               </li>
             </ul>
           </div>

@@ -8,6 +8,8 @@ import {
   EyeOff,
   Flame,
   Gamepad2,
+  Globe,
+  HeartHandshake,
   HeartPulse,
   Leaf,
   Pizza,
@@ -439,6 +441,40 @@ export function LandingPage() {
                 <Link to="/signup">Join the community</Link>
               </Button>
             </div>
+          </div>
+        </section>
+
+        {/* Promote Healthy behaviour */}
+        <section className="border-t bg-muted/40">
+          <div className="mx-auto w-full max-w-3xl px-4 py-16 sm:px-6">
+            <Card className="gap-5 rounded-2xl border border-primary/20 bg-background/80 p-6 shadow-sm backdrop-blur sm:p-8">
+              <div className="flex items-center gap-4">
+                <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                  <HeartHandshake className="size-6" />
+                </span>
+                <div>
+                  <h2 className="font-display text-lg font-bold tracking-tight sm:text-xl">
+                    Promote Healthy behaviour in your community
+                  </h2>
+                  <p className="text-sm text-muted-foreground">
+                    Join the Quit Initiative as a global volunteer
+                  </p>
+                </div>
+              </div>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Become a volunteer and help students on your campus quit
+                addiction. We operate across 6 countries — your community
+                could be next. Peer support, campus outreach, content creation —
+                pick the role that fits you.
+              </p>
+              <Button className="w-full gap-1.5 sm:w-auto" asChild>
+                <Link to="/app/volunteer">
+                  <Globe className="size-4" />
+                  Become a volunteer
+                  <ArrowRight className="size-4" />
+                </Link>
+              </Button>
+            </Card>
           </div>
         </section>
       </main>

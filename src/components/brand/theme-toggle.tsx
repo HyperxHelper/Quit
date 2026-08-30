@@ -22,7 +22,7 @@ export function ThemeToggle() {
 
   useEffect(() => {
     applyTheme(theme)
-  }, [])
+  }, [theme])
 
   function toggle() {
     const next = theme === "dark" ? "light" : "dark"
