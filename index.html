@@ -28,18 +28,6 @@
       rel="stylesheet"
     />
     <title>Quit — Start your comeback</title>
-    <script>
-      // Restore the intended route after a GitHub Pages SPA 404 redirect.
-      ;(function () {
-        try {
-          var target = sessionStorage.getItem("quit.redirect")
-          if (target && !location.href.includes(target.split(/[?#]/)[0])) {
-            history.replaceState(null, "", new URL(target).pathname + new URL(target).search + new URL(target).hash)
-          }
-          sessionStorage.removeItem("quit.redirect")
-        } catch (e) {}
-      })()
-    </script>
   </head>
   <body>
     <div id="root"></div>
