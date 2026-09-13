@@ -60,10 +60,10 @@ export function ProfilePage() {
   }
 
   return (
-    <div className="w-full px-4 py-6 sm:px-6 sm:py-8">
+    <div className="w-full px-4 py-5 sm:px-6 sm:py-8">
       {/* Page header */}
-      <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
+      <header className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
           <p className="text-xs font-semibold uppercase tracking-wide text-primary">
             Account
           </p>
@@ -75,50 +75,49 @@ export function ProfilePage() {
             app.
           </p>
         </div>
-        <Button variant="outline" className="shrink-0 gap-1.5" asChild>
+        <Button variant="outline" size="sm" className="shrink-0 gap-1.5" asChild>
           <Link to="/app/settings">
-            <Settings className="size-4" /> Edit settings
+            <Settings className="size-3.5" /> <span className="hidden sm:inline">Edit settings</span>
+            <span className="sm:hidden">Edit</span>
           </Link>
         </Button>
       </header>
 
       {/* Identity */}
-      <Card className="mt-6 gap-4 rounded-2xl border bg-card p-6 shadow-sm sm:p-7">
-        <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
-          <Avatar className="size-20 shrink-0">
+      <Card className="mt-5 gap-4 rounded-2xl border bg-card p-4 shadow-sm sm:mt-6 sm:p-6">
+        <div className="flex items-center gap-4">
+          <Avatar className="size-16 shrink-0 sm:size-20">
             <AvatarImage src="" alt={user.name} />
-            <AvatarFallback className="bg-primary/10 text-2xl text-primary">
+            <AvatarFallback className="bg-primary/10 text-xl text-primary sm:text-2xl">
               {initials}
             </AvatarFallback>
           </Avatar>
-          <div className="min-w-0">
-            <h2 className="font-display text-xl font-bold tracking-tight">
+          <div className="min-w-0 flex-1">
+            <h2 className="font-display text-lg font-bold tracking-tight sm:text-xl">
               {user.name}
             </h2>
-            <p className="mt-1 text-sm text-muted-foreground">
+            <p className="mt-0.5 text-sm text-muted-foreground">
               {user.isAnonymous
                 ? "Anonymous mode — progress lives on this device"
                 : user.email}
             </p>
-            <div className="mt-2 flex justify-center gap-2 sm:justify-start">
-              {user.isAnonymous && (
-                <Badge variant="secondary">
-                  <Shield className="size-3" /> Preview account
-                </Badge>
-              )}
-            </div>
+            {user.isAnonymous && (
+              <Badge variant="secondary" className="mt-2 gap-1">
+                <Shield className="size-3" /> Preview account
+              </Badge>
+            )}
           </div>
         </div>
       </Card>
 
       {/* Upgrade callout */}
       {user.isAnonymous && (
-        <Card className="mt-4 gap-4 rounded-2xl border border-primary/20 bg-primary/5 p-6 shadow-sm sm:flex-row sm:items-center">
+        <Card className="mt-3 gap-3 rounded-2xl border border-primary/20 bg-primary/5 p-4 shadow-sm sm:mt-4 sm:flex-row sm:items-center sm:gap-4 sm:p-6">
           <div className="flex items-start gap-3">
             <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
               <Sparkles className="size-5" />
             </span>
-            <div>
+            <div className="min-w-0">
               <div className="text-sm font-semibold">Save your progress</div>
               <p className="mt-1 text-sm text-muted-foreground">
                 Upgrade to a full account so your streak survives with the
@@ -138,9 +137,9 @@ export function ProfilePage() {
       <SectionLabel
         title="Tools"
         sub="Everything on your side of the app"
-        className="mt-8"
+        className="mt-7 sm:mt-8"
       />
-      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+      <div className="mt-3 grid gap-2.5 sm:grid-cols-2 sm:gap-3">
         {tools.map((item) => (
           <ToolCard key={item.to} {...item} />
         ))}
@@ -156,14 +155,14 @@ export function ProfilePage() {
       <SectionLabel
         title="Preferences"
         sub="Look and feel, and how we reach you"
-        className="mt-8"
+        className="mt-7 sm:mt-8"
       />
-      <div className="mt-3 space-y-3">
+      <div className="mt-3 space-y-2.5 sm:space-y-3">
         <Card className="rounded-2xl border bg-card shadow-sm">
-          <CardContent className="flex items-center justify-between gap-4 py-4">
+          <CardContent className="flex items-center justify-between gap-3 py-3.5 sm:gap-4 sm:py-4">
             <div className="flex items-center gap-3">
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                <Palette className="size-5" />
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary sm:size-10">
+                <Palette className="size-4.5 sm:size-5" />
               </span>
               <div>
                 <div className="text-sm font-semibold">Appearance</div>
@@ -176,10 +175,10 @@ export function ProfilePage() {
           </CardContent>
         </Card>
         <Card className="rounded-2xl border bg-card shadow-sm">
-          <CardContent className="flex items-center justify-between gap-4 py-4">
+          <CardContent className="flex items-center justify-between gap-3 py-3.5 sm:gap-4 sm:py-4">
             <div className="flex items-center gap-3">
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                <Bell className="size-5" />
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary sm:size-10">
+                <Bell className="size-4.5 sm:size-5" />
               </span>
               <div>
                 <div className="text-sm font-semibold">
@@ -205,10 +204,10 @@ export function ProfilePage() {
       </div>
 
       {/* Sign out */}
-      <div className="mt-10">
+      <div className="mt-8 pb-4 sm:mt-10">
         <Button
           variant="outline"
-          className="h-12 w-full gap-2 rounded-xl text-sm font-semibold text-destructive"
+          className="h-11 w-full gap-2 rounded-xl text-sm font-semibold text-destructive sm:h-12"
           onClick={handleSignOut}
         >
           <LogOut className="size-4" strokeWidth={2} /> Sign out
@@ -249,10 +248,10 @@ function ToolCard({
   sub: string
 }) {
   return (
-    <Card className="group rounded-2xl border bg-card p-1 shadow-sm">
-      <Link to={to} className="flex items-center gap-4 p-3">
-        <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-          <Icon className="size-5" strokeWidth={2} />
+    <Card className="group rounded-2xl border bg-card p-0.5 shadow-sm sm:p-1">
+      <Link to={to} className="flex items-center gap-3 p-3 sm:gap-4 sm:p-3.5">
+        <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary sm:size-11">
+          <Icon className="size-4.5 sm:size-5" strokeWidth={2} />
         </div>
         <div className="min-w-0 flex-1">
           <div className="text-sm font-semibold">{title}</div>

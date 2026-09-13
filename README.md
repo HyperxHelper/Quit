@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <strong>v0.16 — mobile-first preview.</strong> This copy lives on GitHub so you can explore
+  <strong>v0.17 — mobile-first preview.</strong> This copy lives on GitHub so you can explore
   and try everything before it ships for real. A <strong>full membership is coming soon</strong>.
   Until then: use <strong>Anonymous mode</strong> and your progress stays on your device.
 </p>
@@ -80,7 +80,7 @@ An open stack, an honest team:
 | **Community** | Student circles, creator streams, live accountability (Phase 3) |
 | **Global Volunteer Program** | Apply to volunteer — peer support, campus outreach, content creation across 6 countries |
 | **Help** | Seek-help hub — crisis lines, WHO stats and member stories (mockup details until real accounts ship) |
-| **Profile** | Identity, settings, tools, and sign-out in one place |
+| **Profile** | Mobile-optimised identity card, tools grid, preferences and sign-out |
 | **Academy** | Video + article lessons that build resistance, type by type |
 | **Clothing** | Student-only merch that makes quitting visible |
 | **Our Code** | The constitution — how we support and care about each other |
@@ -123,8 +123,14 @@ src/
   assets/         # static brand assets
 ```
 
-## Key improvements (v0.16)
+## Key improvements
 
+### v0.17
+- **Mobile-optimised profile page** — horizontal avatar layout, tighter card
+  padding, responsive icon sizes, and proper bottom-nav clearance on small
+  screens.
+
+### v0.16
 - **Three.js hero slideshow** — animated particle field and floating ring geometry
   that cycles through three content slides with color-shifting transitions.
 - **Memoized dashboard** — streak, savings, progress and prompt calculations are
