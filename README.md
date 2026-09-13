@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <strong>v0.17 — mobile-first preview.</strong> This copy lives on GitHub so you can explore
+  <strong>v0.18 — mobile-first preview.</strong> This copy lives on GitHub so you can explore
   and try everything before it ships for real. A <strong>full membership is coming soon</strong>.
   Until then: use <strong>Anonymous mode</strong> and your progress stays on your device.
 </p>
@@ -124,6 +124,13 @@ src/
 ```
 
 ## Key improvements
+
+### v0.18
+- **GitHub Pages compatibility** — switched from `BrowserRouter` to `HashRouter`
+  so all routes work on static hosts like GitHub Pages. URLs now use `#` fragments
+  (e.g. `https://hyperxhelper.github.io/Quit/#/app`).
+- **Fixed base path** — Vite config uses `base: "/Quit/"` so assets resolve
+  correctly under the GitHub Pages sub-directory.
 
 ### v0.17
 - **Mobile-optimised profile page** — horizontal avatar layout, tighter card

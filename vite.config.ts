@@ -5,9 +5,9 @@ import tailwindcss from "@tailwindcss/vite"
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Relative base so the built app works from any GitHub Pages
-  // sub-path (https://<user>.github.io/<repo>/).
-  base: "./",
+  // Base path for GitHub Pages sub-directory deployment.
+  // HashRouter handles client routing, so this only affects asset paths.
+  base: "/Quit/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

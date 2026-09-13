@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom"
+import { HashRouter, Navigate, Route, Routes, useLocation } from "react-router-dom"
 
 import { AuthProvider } from "@/lib/auth"
 import { Toaster } from "@/components/ui/sonner"
@@ -30,7 +30,7 @@ function ScrollToTop() {
 export default function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <HashRouter>
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -54,7 +54,7 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Toaster position="top-center" richColors />
-      </BrowserRouter>
+      </HashRouter>
     </AuthProvider>
   )
 }
