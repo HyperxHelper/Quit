@@ -14,7 +14,7 @@ import {
   X,
 } from "lucide-react"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Logo, Wordmark } from "@/components/brand/logo"
 import { ThemeToggle } from "@/components/brand/theme-toggle"
@@ -115,7 +115,6 @@ export function AppShell() {
         <div className="border-t p-3">
           <div className="flex items-center gap-3 rounded-lg p-2">
             <Avatar className="size-9">
-              <AvatarImage src="" alt={user.name} />
               <AvatarFallback className="bg-primary/10 text-primary">
                 {initials}
               </AvatarFallback>

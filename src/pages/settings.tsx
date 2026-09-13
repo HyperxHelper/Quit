@@ -18,8 +18,13 @@ export function SettingsPage() {
   if (!user) return null
 
   function saveProfile() {
-    // Concept: would call to user service. Local-only for now.
-    toast.success("Profile updated (local). Syncs when the API lands.")
+    // Persist name to the session so it reflects across the app.
+    // Full user-record update will come with the backend phase.
+    if (user && name.trim() && name.trim() !== user.name) {
+      const updated = { ...user, name: name.trim() }
+      localStorage.setItem("quit.session", JSON.stringify(updated))
+    }
+    toast.success("Profile updated locally. Syncs when the API lands.")
   }
 
   return (
@@ -112,6 +117,8 @@ export function SettingsPage() {
         <CardContent className="py-6">
           <button
             type="button"
+            role="switch"
+            aria-checked={anonymous}
             onClick={() => setAnonymous((v) => !v)}
             className="flex w-full items-start justify-between gap-4 rounded-lg border p-4 text-left"
           >

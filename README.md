@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <strong>v0.18 — mobile-first preview.</strong> This copy lives on GitHub so you can explore
+  <strong>v0.19 — mobile-first preview.</strong> This copy lives on GitHub so you can explore
   and try everything before it ships for real. A <strong>full membership is coming soon</strong>.
   Until then: use <strong>Anonymous mode</strong> and your progress stays on your device.
 </p>
@@ -124,6 +124,22 @@ src/
 ```
 
 ## Key improvements
+
+### v0.19
+- **Fixed all hash navigation links** — navbar and footer section links now work
+  correctly with HashRouter.
+- **Fixed broken academy links** — volunteer and help pages now use React Router
+  `<Link>` instead of raw `<a>` tags.
+- **localStorage resilience** — `persist()` and volunteer form submission now
+  catch `QuotaExceededError` and corrupted data gracefully.
+- **Settings page saves** — display name edits are now persisted to the session.
+- **Accessibility** — anonymous mode toggle in settings has `role="switch"` and
+  `aria-checked`. Removed misleading non-functional Eye icon from login.
+- **Clothing page** — Order and Browse buttons now show "coming soon" toast
+  instead of dead links.
+- **Slideshow performance** — replaced per-frame `Date.now()` calls with
+  Three.js `clock.elapsedTime`; fixed setTimeout cleanup on unmount.
+- **Theme toggle** — removed redundant double `applyTheme` call.
 
 ### v0.18
 - **GitHub Pages compatibility** — switched from `BrowserRouter` to `HashRouter`

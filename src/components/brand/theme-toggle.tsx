@@ -27,7 +27,6 @@ export function ThemeToggle() {
   function toggle() {
     const next = theme === "dark" ? "light" : "dark"
     setTheme(next)
-    applyTheme(next)
   }
 
   return (

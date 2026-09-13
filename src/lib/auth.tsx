@@ -74,7 +74,11 @@ function db<T>(key: string, fallback: T): T {
 }
 
 function persist(key: string, value: unknown) {
-  localStorage.setItem(key, JSON.stringify(value))
+  try {
+    localStorage.setItem(key, JSON.stringify(value))
+  } catch {
+    // localStorage full or unavailable — silently degrade.
+  }
 }
 
 function loadUsers(): Record<string, UserRecord> {

@@ -31,16 +31,17 @@ function ParticleField({ colorIndex }: { colorIndex: number }) {
     []
   )
 
-  useFrame((_, delta) => {
+  useFrame((state, delta) => {
     if (!ref.current) return
     const geo = ref.current.geometry
     const posAttr = geo.attributes.position as THREE.BufferAttribute
     const colAttr = geo.attributes.color as THREE.BufferAttribute
     const target = palette[colorIndex % palette.length]
+    const t = state.clock.elapsedTime
 
     for (let i = 0; i < count; i++) {
-      posAttr.array[i * 3 + 1] += Math.sin(Date.now() * 0.001 + i) * delta * 0.15
-      posAttr.array[i * 3] += Math.cos(Date.now() * 0.0008 + i * 0.5) * delta * 0.1
+      posAttr.array[i * 3 + 1] += Math.sin(t + i) * delta * 0.15
+      posAttr.array[i * 3] += Math.cos(t * 0.8 + i * 0.5) * delta * 0.1
       const c = colAttr.array
       c[i * 3] += (target.r - c[i * 3]) * 0.02
       c[i * 3 + 1] += (target.g - c[i * 3 + 1]) * 0.02
@@ -148,14 +149,18 @@ export function HeroSlideshow() {
 
   /* Cycle through slides */
   useEffect(() => {
+    let fadeTimer: ReturnType<typeof setTimeout>
     const id = setInterval(() => {
       setFade(false)
-      setTimeout(() => {
+      fadeTimer = setTimeout(() => {
         setSlideIndex((i) => (i + 1) % slides.length)
         setFade(true)
       }, 400)
     }, SLIDE_INTERVAL_MS)
-    return () => clearInterval(id)
+    return () => {
+      clearInterval(id)
+      clearTimeout(fadeTimer)
+    }
   }, [])
 
   const current = slides[slideIndex]

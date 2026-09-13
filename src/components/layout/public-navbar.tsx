@@ -13,9 +13,9 @@ type NavLinkItem =
   | { label: string; href: string }
 
 const links: NavLinkItem[] = [
-  { label: "Why Quit", href: "/#why" },
-  { label: "The Science", href: "/#science" },
-  { label: "How it works", href: "/#how" },
+  { label: "Why Quit", href: "#why" },
+  { label: "The Science", href: "#science" },
+  { label: "How it works", href: "#how" },
   { label: "Our Code", to: "/code" },
 ]
 

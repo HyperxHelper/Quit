@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import {
   ArrowRight,
   Globe,
@@ -74,9 +75,15 @@ export function VolunteerPage() {
     }
     setSubmitting(true)
     // Simulate submission — localStorage-backed for now
-    const applications = JSON.parse(
-      localStorage.getItem("quit.volunteer-applications") ?? "[]"
-    )
+    let applications: unknown[] = []
+    try {
+      applications = JSON.parse(
+        localStorage.getItem("quit.volunteer-applications") ?? "[]"
+      )
+      if (!Array.isArray(applications)) applications = []
+    } catch {
+      applications = []
+    }
     applications.push({
       name: name.trim(),
       email: email.trim().toLowerCase(),
@@ -266,9 +273,9 @@ export function VolunteerPage() {
               evidence-based approach.
             </p>
             <Button className="mt-6 gap-1.5" asChild>
-              <a href="/app/academy">
+              <Link to="/app/academy">
                 Explore the Academy <ArrowRight className="size-4" />
-              </a>
+              </Link>
             </Button>
           </Card>
         ) : (

@@ -27,22 +27,22 @@ export function Footer() {
             <h4 className="mb-3 text-sm font-semibold">Quit</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="/#why" className="hover:text-foreground">
+                <a href="#why" className="hover:text-foreground">
                   Why Quit
                 </a>
               </li>
               <li>
-                <a href="/#science" className="hover:text-foreground">
+                <a href="#science" className="hover:text-foreground">
                   The science
                 </a>
               </li>
               <li>
-                <a href="/#how" className="hover:text-foreground">
+                <a href="#how" className="hover:text-foreground">
                   How it works
                 </a>
               </li>
               <li>
-                <a href="/#stories" className="hover:text-foreground">
+                <a href="#stories" className="hover:text-foreground">
                   Stories
                 </a>
               </li>

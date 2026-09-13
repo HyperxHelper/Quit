@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import {
   ArrowRight,
   ShoppingBag,
@@ -6,6 +5,7 @@ import {
   Sparkles,
   Truck,
 } from "lucide-react"
+import { toast } from "sonner"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -66,7 +66,10 @@ export function ClothingPage() {
               <span className="font-display text-lg font-extrabold text-primary">
                 {product.price}
               </span>
-              <Button size="sm">
+              <Button
+                size="sm"
+                onClick={() => toast.info("Shop coming soon — stay tuned!")}
+              >
                 {user ? "Order" : "Sign in to order"}
               </Button>
             </div>
@@ -87,10 +90,8 @@ export function ClothingPage() {
             </div>
           </div>
         </div>
-        <Button variant="outline" asChild>
-          <Link to={user ? "#" : "/signup"} className="gap-1.5">
-            Browse the shop <ArrowRight className="size-4" />
-          </Link>
+        <Button variant="outline" onClick={() => toast.info("Shop coming soon!")}>
+          Browse the shop <ArrowRight className="size-4" />
         </Button>
       </div>
 

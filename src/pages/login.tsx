@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link, useNavigate, useSearchParams } from "react-router-dom"
-import { ArrowRight, Eye, Lock, Sparkles, User } from "lucide-react"
+import { ArrowRight, Lock, Sparkles, User } from "lucide-react"
 import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
@@ -198,7 +198,7 @@ export function LoginPage() {
                   autoComplete="new-password"
                   placeholder="Make one up — 4+ characters"
                   className={cn(
-                    "pl-9 pr-9",
+                    "pl-9",
                     anonymousFieldErrors.password &&
                       "aria-invalid:border-destructive"
                   )}
@@ -208,7 +208,6 @@ export function LoginPage() {
                     setAnonymous((p) => ({ ...p, password: e.target.value }))
                   }
                 />
-                <Eye className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
               </div>
               {anonymousFieldErrors.password && (
                 <p className="text-xs text-destructive">
