@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <strong>v0.15 — mobile-first preview.</strong> This copy lives on GitHub so you can explore
+  <strong>v0.16 — mobile-first preview.</strong> This copy lives on GitHub so you can explore
   and try everything before it ships for real. A <strong>full membership is coming soon</strong>.
   Until then: use <strong>Anonymous mode</strong> and your progress stays on your device.
 </p>
@@ -46,6 +46,8 @@ Most "quit" apps sell willpower myths. Quit does the opposite:
   for backup/live integration.
 - **Global Volunteer Program** — join the Quit Initiative as a volunteer. Peer
   support, campus outreach, and content creation roles across 6 countries.
+- **Interactive hero slideshow** — Three.js-powered landing experience with
+  animated particles, floating geometry and auto-cycling content slides.
 - **Dark mode** — built on theme tokens, so the app is as comfortable at 2am as
   it is in daylight.
 
@@ -72,13 +74,13 @@ An open stack, an honest team:
 
 | Area | What it does |
 | --- | --- |
-| **Home** | Streak hero, daily check-in, quit-march progress, wins you regained |
+| **Home** | Three.js hero slideshow, streak hero, daily check-in, quit-march progress, wins you regained |
 | **My plan** | Pick the one habit to quit, set a start date, get savings estimate |
 | **Science** | Peer-reviewed sources made readable for a student |
 | **Community** | Student circles, creator streams, live accountability (Phase 3) |
 | **Global Volunteer Program** | Apply to volunteer — peer support, campus outreach, content creation across 6 countries |
 | **Help** | Seek-help hub — crisis lines, WHO stats and member stories (mockup details until real accounts ship) |
-| **Profile** | Identity, settings, Academy, Clothing and sign-out in one place |
+| **Profile** | Identity, settings, tools, and sign-out in one place |
 | **Academy** | Video + article lessons that build resistance, type by type |
 | **Clothing** | Student-only merch that makes quitting visible |
 | **Our Code** | The constitution — how we support and care about each other |
@@ -90,7 +92,9 @@ An open stack, an honest team:
 - React 19 + TypeScript + Vite
 - Tailwind CSS v4 + shadcn/ui (theme-token light/dark mode)
 - React Router v7
+- Three.js + @react-three/fiber + @react-three/drei (interactive hero slideshow)
 - Lucide icons
+- Zod (form validation)
 - Local-first auth (concept-safe hashing), backend pipeline at launch.
 
 ## Getting started
@@ -112,12 +116,23 @@ npm run preview
 
 ```
 src/
-  components/     # shadcn/ui components + layout pieces (navbar, footer, sponsor, sources)
+  components/     # shadcn/ui components + layout pieces (navbar, footer, sponsor, sources, hero-slideshow)
   pages/          # one file per route
   lib/            # auth, zod schemas, addiction helpers
   data/           # data sources ready for backup/live integration (e.g. member-stories)
   assets/         # static brand assets
 ```
+
+## Key improvements (v0.16)
+
+- **Three.js hero slideshow** — animated particle field and floating ring geometry
+  that cycles through three content slides with color-shifting transitions.
+- **Memoized dashboard** — streak, savings, progress and prompt calculations are
+  now memoized to avoid redundant re-renders.
+- **Route scroll restoration** — every navigation scrolls to the top of the new page.
+- **Timer cleanup** — landing-page quote rotator properly clears all timers on
+  unmount to prevent state-update-after-unmount leaks.
+- **Optimised plan saves** — user lookup avoids intermediate array allocation.
 
 ## Support the project
 

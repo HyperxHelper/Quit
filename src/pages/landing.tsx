@@ -34,6 +34,7 @@ import { PublicNavbar } from "@/components/layout/public-navbar"
 import { Footer } from "@/components/layout/footer"
 import { SponsorSection } from "@/components/layout/sponsor-section"
 import { ScienceSources } from "@/components/layout/science-sources"
+import { HeroSlideshow } from "@/components/layout/hero-slideshow"
 import { useAuth } from "@/lib/auth"
 
 const habits = [
@@ -210,6 +211,14 @@ export function LandingPage() {
               )}
             </div>
           </div>
+
+          {/* Hero slideshow – Three.js powered */}
+          <div className="mx-auto w-full max-w-5xl px-4 pt-8 sm:px-6">
+            <HeroSlideshow />
+          </div>
+
+          {/* Spacer */}
+          <div className="h-16" />
 
           {/* FIX 5 · Live stats micro-moment */}
           <LiveStats />
@@ -501,14 +510,18 @@ function LiveStats() {
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
+    let fadeTimer: ReturnType<typeof setTimeout>
     const interval = setInterval(() => {
       setVisible(false)
-      window.setTimeout(() => {
+      fadeTimer = setTimeout(() => {
         setIndex((i) => (i + 1) % liveQuotes.length)
         setVisible(true)
       }, 400)
     }, 5000)
-    return () => clearInterval(interval)
+    return () => {
+      clearInterval(interval)
+      clearTimeout(fadeTimer)
+    }
   }, [])
 
   return (

@@ -16,9 +16,6 @@ const links: NavLinkItem[] = [
   { label: "Why Quit", href: "/#why" },
   { label: "The Science", href: "/#science" },
   { label: "How it works", href: "/#how" },
-  { label: "Stories", href: "/#stories" },
-  { label: "Academy", to: "/app/academy" },
-  { label: "Clothing", to: "/app/clothing" },
   { label: "Our Code", to: "/code" },
 ]
 

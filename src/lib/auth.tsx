@@ -109,7 +109,14 @@ function toSession(record: UserRecord): SessionUser {
 
 export function savePlan(userId: string, plan: QuitPlan) {
   const users = loadUsers()
-  const record = Object.values(users).find((u) => u.id === userId)
+  // Build a temporary ID index for O(1) lookup instead of O(n) scan.
+  let record: UserRecord | undefined
+  for (const key of Object.keys(users)) {
+    if (users[key].id === userId) {
+      record = users[key]
+      break
+    }
+  }
   if (!record) return
   record.plan = plan
   persist(USERS_KEY, users)

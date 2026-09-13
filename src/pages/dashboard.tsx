@@ -1,3 +1,4 @@
+import { useMemo } from "react"
 import { Link } from "react-router-dom"
 import {
   ArrowRight,
@@ -21,9 +22,15 @@ const milestones = [1, 3, 7, 14, 21, 30, 66]
 
 export function DashboardPage() {
   const { user } = useAuth()
-  if (!user) return null
+  const plan = user?.plan
 
-  const plan = user.plan
+  const streak = useMemo(() => (plan ? streakDays(plan) : 0), [plan])
+  const saved = useMemo(() => (plan ? streak * plan.dailySaving : 0), [streak, plan])
+  const milestone = useMemo(() => milestones.find((m) => m > streak) ?? 66, [streak])
+  const pct = useMemo(() => atPct(streak), [streak])
+  const prompt = useMemo(() => dailyPrompt(streak), [streak])
+
+  if (!user) return null
 
   if (!plan) {
     return (
@@ -53,10 +60,6 @@ export function DashboardPage() {
       </div>
     )
   }
-
-  const streak = streakDays(plan)
-  const saved = streak * plan.dailySaving
-  const milestone = milestones.find((m) => m > streak) ?? 66
 
   return (
     <div className="w-full px-4 py-6 sm:px-6">
@@ -108,7 +111,7 @@ export function DashboardPage() {
           <CardTitle className="text-base">Your quit-march</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <Progress value={atPct(streak)} className="h-2.5" />
+          <Progress value={pct} className="h-2.5" />
           <div className="flex flex-wrap justify-between gap-2 text-xs text-muted-foreground">
             {milestones.map((m) => (
               <span
@@ -139,7 +142,7 @@ export function DashboardPage() {
         <StatCard
           icon={HeartPulse}
           label="Habit automaticity"
-          value={`${atPct(streak)}%`}
+          value={`${pct}%`}
           sub="On the road to Day 66"
         />
       </div>
@@ -154,7 +157,7 @@ export function DashboardPage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <p className="text-sm leading-relaxed">{dailyPrompt(streak)}</p>
+            <p className="text-sm leading-relaxed">{prompt}</p>
             <Button size="sm" className="gap-1.5" onClick={() => toast.success("Nice — today checked in as clean.")}>
               <CalendarCheck className="size-4" /> Mark today as clean
             </Button>

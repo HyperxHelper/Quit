@@ -1,4 +1,5 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import { useEffect } from "react"
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom"
 
 import { AuthProvider } from "@/lib/auth"
 import { Toaster } from "@/components/ui/sonner"
@@ -18,10 +19,19 @@ import { ProfilePage } from "@/pages/profile"
 import { HelpPage } from "@/pages/help"
 import { VolunteerPage } from "@/pages/volunteer"
 
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
+
 export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/code" element={<CodePage />} />
