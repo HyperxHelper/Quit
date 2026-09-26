@@ -42,23 +42,13 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#stories" className="hover:text-foreground">
-                  Stories
-                </a>
-              </li>
-              <li>
-                <Link to="/app/academy" className="hover:text-foreground">
-                  Academy
-                </Link>
-              </li>
-              <li>
-                <Link to="/app/clothing" className="hover:text-foreground">
-                  Clothing
-                </Link>
-              </li>
-              <li>
                 <Link to="/code" className="hover:text-foreground">
                   Our Code
+                </Link>
+              </li>
+              <li>
+                <Link to="/research" className="hover:text-foreground">
+                  Research
                 </Link>
               </li>
             </ul>

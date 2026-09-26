@@ -12,6 +12,7 @@ import {
   HeartHandshake,
   HeartPulse,
   Leaf,
+  Microscope,
   Pizza,
   ShieldCheck,
   Smartphone,
@@ -219,6 +220,36 @@ export function LandingPage() {
 
           {/* Spacer */}
           <div className="h-16" />
+
+          {/* Quit Lab teaser */}
+          <div className="mx-auto w-full max-w-5xl px-4 pb-8 pt-4 sm:px-6">
+            <Link to="/research" className="group block">
+              <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 p-5 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 sm:p-6">
+                <div className="absolute -right-10 -top-10 size-40 rounded-full bg-primary/5 transition-transform duration-500 group-hover:scale-150" />
+                <div className="relative flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
+                  <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110">
+                    <Microscope className="size-6" strokeWidth={2} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-start">
+                      <h3 className="font-display text-base font-bold tracking-tight sm:text-lg">
+                        Quit Lab
+                      </h3>
+                      <Badge variant="secondary" className="text-[10px]">
+                        New
+                      </Badge>
+                    </div>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      We use AI, data science and community research to fight
+                      addiction at its roots — and translate findings into
+                      content everyone can understand.
+                    </p>
+                  </div>
+                  <ArrowRight className="size-5 shrink-0 text-primary transition-transform duration-300 group-hover:translate-x-1" />
+                </div>
+              </div>
+            </Link>
+          </div>
 
           {/* FIX 5 · Live stats micro-moment */}
           <LiveStats />

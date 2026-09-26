@@ -9,6 +9,8 @@
 
 <p align="center">
   <img src="media/badge.svg" alt="Quit Initiative" />
+  &nbsp;
+  <img src="media/badge-lab.svg" alt="Quit Lab" />
 </p>
 
 <p align="center">
@@ -46,6 +48,9 @@ Most "quit" apps sell willpower myths. Quit does the opposite:
   for backup/live integration.
 - **Global Volunteer Program** — join the Quit Initiative as a volunteer. Peer
   support, campus outreach, and content creation roles across 6 countries.
+- **Quit Lab** — the research engine: AI, data science and community fieldwork
+  translated into accessible content in +5 languages. Visit `/research` to
+  explore our domains, methodology and volunteer opportunities.
 - **Interactive hero slideshow** — Three.js-powered landing experience with
   animated particles, floating geometry and auto-cycling content slides.
 - **Dark mode** — built on theme tokens, so the app is as comfortable at 2am as
@@ -53,6 +58,61 @@ Most "quit" apps sell willpower myths. Quit does the opposite:
 
 > "A failure to quit is not a failure of the person. Relapse is a data point,
 > not a verdict." — the Quit mindset
+
+## Research at Quit Lab
+
+<p align="center">
+  <img src="media/badge-lab.svg" alt="Quit Lab" />
+</p>
+
+Quit Lab is the research and development arm of Quit Initiative — a space
+where data science, AI and community-driven fieldwork come together to
+understand addiction and turn that understanding into tools, content and
+education that anyone with a phone can access.
+
+### What we research
+
+We formulate hypotheses on current market and population trends across the
+behaviours that erode health and potential the most:
+
+- **Gambling** — risk factors and the growing overlap with online platforms.
+- **Alcohol addiction** — prevalence, cultural drivers and digital interventions.
+- **Drug use & substance abuse** — dependency trends, harm reduction, recovery data.
+- **Cannabis** — shifting legal landscapes, usage patterns and long-term health impact.
+- **Tobacco** — prevalence tracking, cessation programs, campaign reach.
+- **Vaping** — e-cigarette growth, youth-targeted marketing, emerging health data.
+- **Addiction to Reels & Doom-Scrolling** — short-form content loops, algorithmic amplification, mental-health toll.
+- **Time & Health-Wasting Phenomena** — screen time, sedentary behaviours, passive entertainment.
+
+### How we do it
+
+- **Hypothesis-driven research** — every study starts with a clear question and
+  transparent methodology that others can replicate and challenge.
+- **Research & Statistics** — from survey design to longitudinal analysis, we
+  produce findings that inform both academic discourse and public-health strategy.
+- **AI, Data Science & Machine Learning** — we build models that detect at-risk
+  individuals early, flag health misinformation, predict relapse risk and help
+  clinicians allocate resources where they're needed most. Every system adheres
+  to ethical guidelines and data-protection standards.
+- **Research Translation** — peer-reviewed papers don't save lives sitting in
+  journals. We translate findings into promotional graphics, short-form videos,
+  posters, infographics and audio explainers — in **English, French, Kinyarwanda,
+  Swahili, Spanish and Arabic**.
+- **Training & Education** — we use our research to elevate the cognitive level
+  of communities: educating through structured learning paths, empowering through
+  workshops and mentorship, and enabling through real projects and campaigns.
+
+### Volunteer with Quit Lab
+
+We encourage Medical, Nursing, Health and all allied students to volunteer with
+Quit Lab & Quit Initiative. Drive awareness on your campus, earn verified
+certificates and digital badges, and grow with a community that puts health
+first. Peer support, campus outreach, content creation — pick the role that fits
+you.
+
+👉 **[Join the Global Volunteer Program](https://hyperxhelper.github.io/Quit/#/app/volunteer)**
+
+👉 **[Explore Quit Lab](https://hyperxhelper.github.io/Quit/#/research)**
 
 ## Try it — Anonymous mode first.
 
@@ -84,6 +144,7 @@ An open stack, an honest team:
 | **Academy** | Video + article lessons that build resistance, type by type |
 | **Clothing** | Student-only merch that makes quitting visible |
 | **Our Code** | The constitution — how we support and care about each other |
+| **Quit Lab** | Research division — domains, AI/ML in health, translation, training and volunteer program |
 | **Settings** | Profile, privacy, notifications — tucked under Profile |
 | **Sources** | Public-facing science log — ResearchGate, Nature, PubMed, NIH and more |
 

@@ -5,6 +5,7 @@ import { AuthProvider } from "@/lib/auth"
 import { Toaster } from "@/components/ui/sonner"
 import { LandingPage } from "@/pages/landing"
 import { CodePage } from "@/pages/code"
+import { ResearchPage } from "@/pages/research"
 import { LoginPage } from "@/pages/login"
 import { SignupPage } from "@/pages/signup"
 import { AppShell } from "@/pages/app-shell"
@@ -35,6 +36,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/code" element={<CodePage />} />
+          <Route path="/research" element={<ResearchPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
 

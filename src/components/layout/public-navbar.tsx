@@ -17,6 +17,7 @@ const links: NavLinkItem[] = [
   { label: "The Science", href: "#science" },
   { label: "How it works", href: "#how" },
   { label: "Our Code", to: "/code" },
+  { label: "Research", to: "/research" },
 ]
 
 const sponsorHref = "/#sponsor"
