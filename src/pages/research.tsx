@@ -152,10 +152,9 @@ const translationFormats = [
 const languages = [
   "English",
   "French",
-  "Kinyarwanda",
-  "Swahili",
-  "Spanish",
+  "German",
   "Arabic",
+  "Tunisian Dialect",
 ]
 
 const volunteerPerks = [

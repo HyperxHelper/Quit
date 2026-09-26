@@ -96,8 +96,8 @@ behaviours that erode health and potential the most:
   to ethical guidelines and data-protection standards.
 - **Research Translation** — peer-reviewed papers don't save lives sitting in
   journals. We translate findings into promotional graphics, short-form videos,
-  posters, infographics and audio explainers — in **English, French, Kinyarwanda,
-  Swahili, Spanish and Arabic**.
+posters, infographics and audio explainers — in **English, French, German,
+Arabic and Tunisian Dialect**.
 - **Training & Education** — we use our research to elevate the cognitive level
   of communities: educating through structured learning paths, empowering through
   workshops and mentorship, and enabling through real projects and campaigns.
