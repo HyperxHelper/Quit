@@ -51,6 +51,10 @@ Most "quit" apps sell willpower myths. Quit does the opposite:
 - **Quit Lab** — the research engine: AI, data science and community fieldwork
   translated into accessible content in +5 languages. Visit `/research` to
   explore our domains, methodology and volunteer opportunities.
+- **Quit Blog** ⭐ — the official release channel of the lab: releases, research
+  notes and project outcomes, opening with an interactive Three.js orbit of the
+  modern world's most addictive patterns. Visit `/blog` — marked with a golden
+  star in the navbar so you can't miss it.
 - **Interactive hero slideshow** — Three.js-powered landing experience with
   animated particles, floating geometry and auto-cycling content slides.
 - **Dark mode** — built on theme tokens, so the app is as comfortable at 2am as
@@ -114,6 +118,33 @@ you.
 
 👉 **[Explore Quit Lab](https://hyperxhelper.github.io/Quit/#/research)**
 
+## Quit Blog
+
+**Quit Blog** is the official publishing channel of Quit Initiative &
+Research Lab — where release notes, research findings and the general
+outcomes of the project are shared openly with the community. It launches
+at **0** and grows with every published post, so the public record of the
+lab grows in the open.
+
+- **The blogging cycle** — the counter starts at 0; every release moves it
+  forward. Current count: **1**.
+- **"Introducing Quit Blog"** — the first post introduces the whole project:
+  how Quit Initiative & Research Lab operates as a **STEM Lab** — using
+  Science, Engineering, Technology and Mathematics for the favour of the
+  human being and digital health.
+- **A Three.js orbit** — the page opens with an interactive, draggable
+  orbit of the most addictive patterns the modern world is facing —
+  doom-scrolling, short-form video, likes & validation, push notifications,
+  endless gaming, vaping, gambling and nicotine — with the blogging cycle
+  nested underneath.
+- **Dark from day one** — the interface ships in dark mode, and the navbar
+  theme toggle switches to the bright theme whenever the reader wants it.
+- **From the lab** — written by **Ahmed Ben Abderrazek**, Registered Nurse
+  and CEO of Quit Lab & Initiative. A small project from Tunisia with
+  ambition to cooperate with the whole world.
+
+👉 **[Read Quit Blog](https://hyperxhelper.github.io/Quit/#/blog)**
+
 ## Try it — Anonymous mode first.
 
 This version is a *preview* for people checking out the initiative on GitHub
@@ -145,6 +176,7 @@ An open stack, an honest team:
 | **Clothing** | Student-only merch that makes quitting visible |
 | **Our Code** | The constitution — how we support and care about each other |
 | **Quit Lab** | Research division — domains, AI/ML in health, translation, training and volunteer program |
+| **Quit Blog** | Official blog — Three.js pattern orbit, blogging cycle counted from 0, first release "Introducing Quit Blog" |
 | **Settings** | Profile, privacy, notifications — tucked under Profile |
 | **Sources** | Public-facing science log — ResearchGate, Nature, PubMed, NIH and more |
 

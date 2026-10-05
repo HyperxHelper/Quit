@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { Heart, Menu, X } from "lucide-react"
+import { Heart, Menu, Star, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Logo, Wordmark } from "@/components/brand/logo"
@@ -9,8 +9,8 @@ import { useAuth } from "@/lib/auth"
 import { cn } from "@/lib/utils"
 
 type NavLinkItem =
-  | { label: string; to: string }
-  | { label: string; href: string }
+  | { label: string; to: string; highlight?: boolean }
+  | { label: string; href: string; highlight?: boolean }
 
 const links: NavLinkItem[] = [
   { label: "Why Quit", href: "#why" },
@@ -18,6 +18,7 @@ const links: NavLinkItem[] = [
   { label: "How it works", href: "#how" },
   { label: "Our Code", to: "/code" },
   { label: "Research", to: "/research" },
+  { label: "Blog", to: "/blog", highlight: true },
 ]
 
 const sponsorHref = "/#sponsor"
@@ -42,9 +43,15 @@ export function PublicNavbar() {
                 key={link.to}
                 to={link.to}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                className="flex items-center gap-1 rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
               >
                 {link.label}
+                {link.highlight && (
+                  <Star
+                    aria-hidden
+                    className="size-3 fill-amber-400 text-amber-400 drop-shadow-[0_0_5px_rgba(250,204,21,0.7)]"
+                  />
+                )}
               </Link>
             ) : (
               <a
@@ -103,9 +110,15 @@ export function PublicNavbar() {
                 key={link.to}
                 to={link.to}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                className="flex items-center gap-1 rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
               >
                 {link.label}
+                {link.highlight && (
+                  <Star
+                    aria-hidden
+                    className="size-3 fill-amber-400 text-amber-400 drop-shadow-[0_0_5px_rgba(250,204,21,0.7)]"
+                  />
+                )}
               </Link>
             ) : (
               <a

@@ -6,9 +6,7 @@ import { Button } from "@/components/ui/button"
 function getInitialTheme(): "light" | "dark" {
   const stored = localStorage.getItem("quit.theme")
   if (stored === "dark" || stored === "light") return stored
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light"
+  return "dark"
 }
 
 function applyTheme(theme: "light" | "dark") {

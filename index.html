@@ -14,9 +14,8 @@
       ;(function () {
         try {
           var stored = localStorage.getItem("quit.theme")
-          var dark = stored
-            ? stored === "dark"
-            : window.matchMedia("(prefers-color-scheme: dark)").matches
+          // Dark from day one unless the user explicitly picked light.
+          var dark = stored ? stored === "dark" : true
           if (dark) document.documentElement.classList.add("dark")
         } catch (e) {}
       })()

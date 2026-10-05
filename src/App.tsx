@@ -10,6 +10,7 @@ import { LoginPage } from "@/pages/login"
 import { SignupPage } from "@/pages/signup"
 import { AppShell } from "@/pages/app-shell"
 import { DashboardPage } from "@/pages/dashboard"
+import { BlogPage } from "@/pages/blog"
 import { PlanPage } from "@/pages/plan"
 import { SciencePage } from "@/pages/science"
 import { CommunityPage } from "@/pages/community"
@@ -39,6 +40,7 @@ export default function App() {
           <Route path="/research" element={<ResearchPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/blog" element={<BlogPage />} />
 
           <Route path="/app" element={<AppShell />}>
             <Route index element={<DashboardPage />} />
