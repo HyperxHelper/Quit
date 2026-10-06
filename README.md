@@ -50,7 +50,9 @@ Most "quit" apps sell willpower myths. Quit does the opposite:
   support, campus outreach, and content creation roles across 6 countries.
 - **Quit Lab** — the research engine: AI, data science and community fieldwork
   translated into accessible content in +5 languages. Visit `/research` to
-  explore our domains, methodology and volunteer opportunities.
+  explore our domains, methodology and volunteer opportunities. The home page
+  opens with an autoplaying **Quit Lab intro video** framed right under the
+  hero CTA, so visitors watch the pitch before scrolling on.
 - **Quit Blog** ⭐ — the official release channel of the lab: releases, research
   notes and project outcomes, opening with an interactive Three.js orbit of the
   modern world's most addictive patterns. Visit `/blog` — marked with a golden
@@ -165,7 +167,7 @@ An open stack, an honest team:
 
 | Area | What it does |
 | --- | --- |
-| **Home** | Three.js hero slideshow, streak hero, daily check-in, quit-march progress, wins you regained |
+| **Home** | Three.js hero slideshow, autoplaying Quit Lab intro video, streak hero, daily check-in, quit-march progress, wins you regained |
 | **My plan** | Pick the one habit to quit, set a start date, get savings estimate |
 | **Science** | Peer-reviewed sources made readable for a student |
 | **Community** | Student circles, creator streams, live accountability (Phase 3) |
@@ -219,6 +221,15 @@ src/
 ## Key improvements
 
 ### v0.19
+- **Quit Lab intro video** — the landing hero now embeds the official
+  *Introducing Quit Lab* YouTube video (`OmzrJDHXIHk`) as an autoplaying promo,
+  framed under the "Start your comeback" / "Log in" buttons. Browsers block
+  unmuted autoplay, so it starts muted with a hint to tap the speaker and a
+  "Watch on YouTube" fallback link.
+- **"Watch before scrolling" indicator** — a Now-playing pill (pulsing dot,
+  equalizer bars) plus a hand-drawn bobbing arrow nudge visitors to watch the
+  intro before scrolling the rest of the page. Both animations respect
+  `prefers-reduced-motion`.
 - **Fixed all hash navigation links** — navbar and footer section links now work
   correctly with HashRouter.
 - **Fixed broken academy links** — volunteer and help pages now use React Router

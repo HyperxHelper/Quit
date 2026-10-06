@@ -36,6 +36,7 @@ import { Footer } from "@/components/layout/footer"
 import { SponsorSection } from "@/components/layout/sponsor-section"
 import { ScienceSources } from "@/components/layout/science-sources"
 import { HeroSlideshow } from "@/components/layout/hero-slideshow"
+import { QuitLabIntroVideo } from "@/components/layout/quit-lab-intro-video"
 import { useAuth } from "@/lib/auth"
 
 const habits = [
@@ -211,6 +212,9 @@ export function LandingPage() {
                 </>
               )}
             </div>
+
+            {/* Quit Lab intro — autoplaying promotional video */}
+            <QuitLabIntroVideo />
           </div>
 
           {/* Hero slideshow – Three.js powered */}
