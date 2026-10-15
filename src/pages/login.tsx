@@ -82,7 +82,7 @@ export function LoginPage() {
       footer={
         <>
           Full membership coming soon.{" "}
-          <Link to="/signup" className="font-medium text-primary hover:underline">
+          <Link to="/signup" className="font-medium text-lime-strong hover:underline">
             See what's next
           </Link>
         </>
@@ -91,7 +91,7 @@ export function LoginPage() {
       {user ? (
         <div className="space-y-4">
           <div className="flex items-center gap-4 rounded-xl border bg-card p-4">
-            <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary/10 font-display font-bold text-primary">
+            <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary/10 font-display font-bold text-lime-strong">
               {user.name
                 .split(" ")
                 .map((n) => n[0])

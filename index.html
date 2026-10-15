@@ -1,29 +1,21 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <meta
       name="description"
       content="Quit — science-backed quit plans built for students, by students. Quit smoking, quit wasting time, quit whatever holds you back."
     />
-    <meta name="theme-color" content="#0f766e" />
-    <script>
-      // Apply the saved/preferred theme before first paint to avoid a flash.
-      ;(function () {
-        try {
-          var stored = localStorage.getItem("quit.theme")
-          // Dark from day one unless the user explicitly picked light.
-          var dark = stored ? stored === "dark" : true
-          if (dark) document.documentElement.classList.add("dark")
-        } catch (e) {}
-      })()
-    </script>
+    <meta name="theme-color" content="#0a0a0a" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
       rel="stylesheet"
     />
     <title>Quit — Start your comeback</title>

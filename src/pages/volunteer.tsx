@@ -107,7 +107,7 @@ export function VolunteerPage() {
     <div className="w-full min-w-0 px-4 pb-12 pt-6 sm:px-6 sm:pb-16 sm:pt-8">
       {/* Header */}
       <header>
-        <p className="text-xs font-semibold uppercase tracking-wide text-primary">
+        <p className="font-mono-d text-[10px] tracking-[0.22em] text-lime-strong uppercase">
           Quit Initiative · Global Volunteer Program
         </p>
         <h1 className="font-display mt-1 text-2xl font-bold tracking-tight sm:text-3xl">
@@ -154,12 +154,14 @@ export function VolunteerPage() {
             </div>
             <Button
               size="lg"
-              className="h-12 w-full gap-2 rounded-xl sm:px-6 lg:w-auto"
-              asChild
+              className="h-12 w-full gap-2 rounded-none sm:px-6 lg:w-auto"
+              onClick={() =>
+                document
+                  .getElementById("apply")
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" })
+              }
             >
-              <a href="#apply">
-                Apply now <ArrowRight className="size-4" />
-              </a>
+              Apply now <ArrowRight className="size-4" />
             </Button>
           </div>
         </div>
@@ -213,7 +215,7 @@ export function VolunteerPage() {
             )}
           >
             <div className="flex size-11 items-center justify-center rounded-xl bg-primary/10">
-              <r.icon className="size-5 text-primary" />
+              <r.icon className="size-5 text-lime-strong" />
             </div>
             <h3 className="text-base font-semibold">{r.title}</h3>
             <p className="text-sm text-muted-foreground">{r.desc}</p>
@@ -251,7 +253,7 @@ export function VolunteerPage() {
       </div>
 
       {/* Application form */}
-      <div id="apply" className="mt-10 scroll-mt-24">
+      <div id="apply" className="mt-10">
         <SectionLabel
           title="Apply to volunteer"
           sub="Fill out the form below. We review applications within 48 hours and reach out via email."
@@ -261,7 +263,7 @@ export function VolunteerPage() {
         {submitted ? (
           <Card className="rounded-2xl border border-primary/20 bg-primary/5 p-8 text-center shadow-sm">
             <div className="mx-auto flex size-16 items-center justify-center rounded-2xl bg-primary/10">
-              <Sparkles className="size-8 text-primary" />
+              <Sparkles className="size-8 text-lime-strong" />
             </div>
             <h2 className="font-display mt-4 text-xl font-bold tracking-tight">
               Application received.
@@ -334,7 +336,7 @@ export function VolunteerPage() {
                             className={cn(
                               "rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors",
                               role === r.title
-                                ? "border-primary bg-primary/10 text-primary"
+                                ? "border-primary bg-primary/10 text-lime-strong"
                                 : "border-border text-muted-foreground hover:border-primary/60 hover:text-foreground"
                             )}
                           >
@@ -454,7 +456,7 @@ export function VolunteerPage() {
       {/* Closing CTA */}
       <Card className="mt-8 rounded-2xl border bg-card p-6 shadow-sm sm:p-7">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-lime-strong">
             <HeartHandshake className="size-5" />
           </span>
           <div>
@@ -510,7 +512,7 @@ function StatCard({
     <Card className="gap-2 rounded-2xl border bg-card p-4 shadow-sm">
       <CardContent className="space-y-2 p-0">
         <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-          <span className="flex size-7 items-center justify-center rounded-md bg-primary/10 text-primary">
+          <span className="flex size-7 items-center justify-center rounded-md bg-primary/10 text-lime-strong">
             <Icon className="size-4" />
           </span>
           {label}

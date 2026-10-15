@@ -52,7 +52,7 @@ export function PlanPage() {
       </Link>
 
       <div className="mt-6">
-        <p className="text-sm font-semibold uppercase tracking-wide text-primary">
+        <p className="font-mono-d text-[11px] tracking-[0.22em] text-lime-strong uppercase">
           Step 1 of 1 · Set up your plan
         </p>
         <h1 className="font-display mt-2 text-3xl font-bold tracking-tight">
@@ -98,7 +98,7 @@ export function PlanPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-base">
-              <Target className="size-4 text-primary" />
+              <Target className="size-4 text-lime-strong" />
               Your daily intention
             </CardTitle>
           </CardHeader>
@@ -114,7 +114,7 @@ export function PlanPage() {
               />
             </div>
             <div className="flex items-center gap-2 rounded-lg bg-muted/60 px-4 py-3 text-sm text-muted-foreground">
-              <CalendarDays className="size-4 text-primary" />
+              <CalendarDays className="size-4 text-lime-strong" />
               Starts today —{" "}
               <span className="font-medium text-foreground">day zero</span>,
               and every screen after this is another {daySuffix(1)} won.

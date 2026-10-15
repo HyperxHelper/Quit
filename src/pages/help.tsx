@@ -177,7 +177,7 @@ export function HelpPage() {
     <div className="w-full min-w-0 px-4 pb-12 pt-6 sm:px-6 sm:pb-16 sm:pt-8">
       {/* Header */}
       <header>
-        <p className="text-xs font-semibold uppercase tracking-wide text-primary">
+        <p className="font-mono-d text-[10px] tracking-[0.22em] text-lime-strong uppercase">
           Support · 100% free for every member
         </p>
         <h1 className="font-display mt-1 text-2xl font-bold tracking-tight sm:text-3xl">
@@ -246,7 +246,7 @@ export function HelpPage() {
             className="gap-2 rounded-2xl border bg-card p-4 shadow-sm sm:gap-3 sm:p-5"
           >
             <div className="flex items-center gap-3">
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-lime-strong">
                 <s.icon className="size-5" />
               </span>
               <div className="min-w-0">
@@ -268,7 +268,7 @@ export function HelpPage() {
       {/* Suicide & mental health correlation */}
       <Card className="mt-4 rounded-2xl border bg-card p-6 shadow-sm sm:p-7">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-lime-strong">
             <LifeBuoy className="size-5" />
           </span>
           <div>
@@ -337,21 +337,21 @@ export function HelpPage() {
         {crisisGroups.map((group, gi) => (
           <div key={group.label}>
             {gi > 0 && <div className="mx-4 border-t" />}
-            <div className="px-3 pt-4 pb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <div className="font-mono-d px-3 pt-4 pb-1 text-[10px] tracking-[0.18em] text-muted-foreground uppercase">
               {group.label}
             </div>
             {group.lines.map((line) => (
               <a
                 key={line.tel + line.name}
                 href={`tel:${line.tel}`}
-                className="group flex items-start gap-3 rounded-xl p-3 transition-colors active:bg-accent sm:hover:bg-accent"
+                className="group flex items-start gap-3 rounded-xl p-3 transition-colors active:bg-secondary sm:hover:bg-secondary"
               >
                 <span
                   className={cn(
                     "mt-0.5 flex size-11 shrink-0 items-center justify-center rounded-xl",
                     line.primary
                       ? "bg-primary text-primary-foreground"
-                      : "bg-primary/10 text-primary"
+                      : "bg-primary/10 text-lime-strong"
                   )}
                 >
                   <Phone className="size-5" />
@@ -365,7 +365,7 @@ export function HelpPage() {
                       {line.tag}
                     </Badge>
                   </span>
-                  <span className="font-display text-lg font-bold tabular-nums text-primary">
+                  <span className="font-display text-lg font-bold tabular-nums text-lime-strong">
                     {line.number}
                   </span>
                   <span className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-xs text-muted-foreground">
@@ -401,7 +401,7 @@ export function HelpPage() {
         className="mt-8"
       />
       <div className="mt-3 flex items-start gap-2 rounded-xl border border-dashed border-primary/40 bg-primary/5 p-3 text-xs leading-relaxed text-muted-foreground">
-        <Info className="mt-0.5 size-3.5 shrink-0 text-primary" />
+        <Info className="mt-0.5 size-3.5 shrink-0 text-lime-strong" />
         <p>
           These are mockup details showing how members get help. Real member
           stories will arrive with the real-accounts feature —{" "}
@@ -449,7 +449,7 @@ export function HelpPage() {
             className="animate-in fade-in slide-in-from-bottom-3 gap-0 rounded-2xl border bg-card p-1 shadow-sm"
           >
             <div className="flex items-start gap-3 p-4">
-              <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
+              <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-lime-strong">
                 {m.name.charAt(0)}
               </span>
               <div className="min-w-0 flex-1 break-words">
@@ -472,7 +472,7 @@ export function HelpPage() {
                   <HeartPulse className="size-3" /> Got help
                 </Badge>
                 {m.days && (
-                  <span className="text-xs font-medium text-primary">
+                  <span className="text-xs font-medium text-lime-strong">
                     {m.days}-day streak and counting
                   </span>
                 )}
@@ -514,7 +514,7 @@ export function HelpPage() {
       {/* Empowerment */}
       <Card className="mt-4 rounded-2xl border bg-card p-6 shadow-sm sm:p-7">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-lime-strong">
             <HeartHandshake className="size-5" />
           </span>
           <div>
@@ -546,9 +546,9 @@ export function HelpPage() {
               href={s.href}
               target="_blank"
               rel="noreferrer"
-              className="group flex min-h-14 items-center gap-3 rounded-xl p-3 transition-colors hover:bg-accent"
+              className="group flex min-h-14 items-center gap-3 rounded-xl p-3 transition-colors hover:bg-secondary"
             >
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-lime-strong">
                 <BookOpen className="size-4" />
               </span>
               <div className="min-w-0 flex-1">

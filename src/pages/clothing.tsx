@@ -37,10 +37,13 @@ export function ClothingPage() {
     <div className="mx-auto w-full max-w-4xl px-4 py-10 sm:px-6">
       <div className="flex items-center gap-3">
         <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
-          <Shirt className="size-6 text-primary" />
+          <Shirt className="size-6 text-lime-strong" />
         </div>
         <div>
-          <h1 className="font-display text-2xl font-bold tracking-tight">
+          <p className="font-mono-d text-[10px] tracking-[0.22em] text-lime-strong uppercase">
+            Store · Limited drops
+          </p>
+          <h1 className="font-display mt-1 text-2xl font-bold tracking-tight">
             Clothing
           </h1>
           <p className="text-sm text-muted-foreground">
@@ -54,7 +57,7 @@ export function ClothingPage() {
         {products.map((product) => (
           <Card key={product.name} className="gap-3 p-6">
             <div className="mx-auto flex size-16 items-center justify-center rounded-2xl bg-primary/10">
-              <ShoppingBag className="size-7 text-primary" />
+              <ShoppingBag className="size-7 text-lime-strong" />
             </div>
             <div className="text-center">
               <h3 className="text-base font-semibold">{product.name}</h3>
@@ -63,7 +66,7 @@ export function ClothingPage() {
               </p>
             </div>
             <div className="mt-2 flex items-center justify-between gap-2 border-t pt-3">
-              <span className="font-display text-lg font-extrabold text-primary">
+              <span className="font-display text-lg font-extrabold text-lime-strong">
                 {product.price}
               </span>
               <Button
@@ -79,7 +82,7 @@ export function ClothingPage() {
 
       <div className="mt-8 flex flex-col items-start justify-between gap-4 rounded-2xl border border-primary/30 bg-primary/5 p-6 sm:flex-row sm:items-center">
         <div className="flex items-start gap-3">
-          <Sparkles className="mt-0.5 size-5 shrink-0 text-primary" />
+          <Sparkles className="mt-0.5 size-5 shrink-0 text-lime-strong" />
           <div>
             <div className="text-sm font-semibold">
               Every purchase funds the mission.

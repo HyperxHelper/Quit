@@ -6,10 +6,10 @@ import {
   Sparkles,
 } from "lucide-react"
 
-import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { PublicNavbar } from "@/components/layout/public-navbar"
 import { Footer } from "@/components/layout/footer"
+import Reveal from "@/hooks/reveal"
 
 const articles = [
   {
@@ -49,20 +49,35 @@ export function CodePage() {
     <div className="flex min-h-screen flex-col">
       <PublicNavbar />
       <main className="flex-1">
-        <section className="border-b">
-          <div className="mx-auto w-full max-w-4xl px-4 py-20 text-center sm:px-6">
-            <Badge variant="secondary" className="items-center gap-1.5">
-              <BookMarked className="size-3" />
-              The Quit constitution
-            </Badge>
-            <h1 className="font-display mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl">
-              Our Code
-            </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-              The constitution of Quit — a living guide to how we empower,
-              protect and care about the health of others. Built to stay simple,
-              and to grow with the initiative.
-            </p>
+        <section className="bg-ink relative overflow-hidden border-b border-ink-line text-ink-fg">
+          <div className="bg-grid absolute inset-0 opacity-50" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(163,230,53,0.08),transparent_60%)]" />
+          <div className="relative mx-auto w-full max-w-[1400px] px-5 py-20 md:px-10 md:py-24">
+            <Reveal>
+              <p className="font-mono-d text-[10px] tracking-[0.22em] text-primary uppercase">
+                § — The Quit constitution
+              </p>
+              <h1 className="mt-5 max-w-4xl text-5xl leading-[0.95] font-semibold tracking-[-0.03em] md:text-7xl">
+                Our{" "}
+                <span className="font-serif-d font-normal italic">Code.</span>
+              </h1>
+              <p className="mt-6 max-w-2xl leading-relaxed text-ink-muted md:text-lg">
+                The constitution of Quit — a living guide to how we empower,
+                protect and care about the health of others. Built to stay
+                simple, and to grow with the initiative.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-ink-line pt-5">
+                <span className="font-mono-d text-[10px] tracking-[0.18em] text-ink-muted uppercase">
+                  Five articles
+                </span>
+                <span className="font-mono-d text-[10px] tracking-[0.18em] text-ink-muted uppercase">
+                  Living document
+                </span>
+                <span className="font-mono-d text-[10px] tracking-[0.18em] text-ink-muted uppercase">
+                  Care first
+                </span>
+              </div>
+            </Reveal>
           </div>
         </section>
 
@@ -72,10 +87,10 @@ export function CodePage() {
               <Card key={article.number} className="gap-0 py-6">
                 <CardHeader className="px-6">
                   <div className="flex items-center gap-3">
-                    <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <div className="flex size-10 shrink-0 items-center justify-center border border-border bg-primary text-accent-foreground">
                       <article.icon className="size-5" strokeWidth={2} />
                     </div>
-                    <div className="font-display text-2xl font-extrabold text-primary">
+                    <div className="font-mono-d text-2xl font-semibold text-lime-strong">
                       {article.number}
                     </div>
                   </div>
@@ -92,8 +107,8 @@ export function CodePage() {
             ))}
           </div>
 
-          <div className="mt-10 rounded-2xl border-t-2 border-primary/30 bg-primary/5 p-6 text-center">
-            <p className="text-sm italic text-muted-foreground">
+          <div className="mt-10 border border-primary/40 bg-primary/10 p-6 text-center">
+            <p className="font-serif-d text-base italic text-muted-foreground">
               This constitution is a living document. As the initiative grows,
               so will the commitments it makes — always in service of one
               principle: care.

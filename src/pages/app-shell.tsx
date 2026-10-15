@@ -17,7 +17,6 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Logo, Wordmark } from "@/components/brand/logo"
-import { ThemeToggle } from "@/components/brand/theme-toggle"
 import { Skeleton } from "@/components/ui/skeleton"
 import { useAuth } from "@/lib/auth"
 import { cn } from "@/lib/utils"
@@ -56,7 +55,7 @@ export function AppShell() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-3">
+      <div className="flex min-h-dvh flex-col items-center justify-center gap-3">
         <Skeleton className="size-24 rounded-full" />
         <Skeleton className="h-4 w-40 rounded-full" />
       </div>
@@ -83,10 +82,10 @@ export function AppShell() {
   }
 
   return (
-    <div className="flex min-h-screen overflow-x-hidden">
+    <div className="flex min-h-dvh overflow-x-hidden">
       {/* Sidebar (desktop) */}
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r bg-card md:flex">
-        <Link to="/" className="flex h-16 items-center gap-2 border-b px-5">
+      <aside className="bg-card fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-border md:flex">
+        <Link to="/" className="flex h-16 items-center gap-2 border-b border-border px-5">
           <Logo className="size-7" />
           <Wordmark />
         </Link>
@@ -99,10 +98,10 @@ export function AppShell() {
               end={item.to === "/app"}
               className={({ isActive }) =>
                 cn(
-                  "flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors",
+                  "font-mono-d flex items-center gap-3 px-3 py-2 text-[11px] tracking-[0.14em] uppercase transition-colors",
                   isActive
-                    ? "bg-primary/10 font-medium text-primary"
-                    : "text-muted-foreground hover:bg-accent hover:text-foreground"
+                    ? "bg-primary font-semibold text-accent-foreground"
+                    : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                 )
               }
             >
@@ -115,7 +114,7 @@ export function AppShell() {
         <div className="border-t p-3">
           <div className="flex items-center gap-3 rounded-lg p-2">
             <Avatar className="size-9">
-              <AvatarFallback className="bg-primary/10 text-primary">
+              <AvatarFallback className="bg-primary text-accent-foreground">
                 {initials}
               </AvatarFallback>
             </Avatar>
@@ -129,30 +128,25 @@ export function AppShell() {
               <LogOut />
             </Button>
           </div>
-          <div className="mt-2 flex items-center justify-between px-2">
-            <span className="text-xs text-muted-foreground">Theme</span>
-            <ThemeToggle />
-          </div>
         </div>
       </aside>
 
       {/* Main */}
-      <div className="flex min-h-screen flex-1 flex-col md:pl-64">
+      <div className="flex min-h-dvh flex-1 flex-col md:pl-64">
         {/* Mobile top bar */}
-        <header className="flex h-16 items-center justify-between border-b px-4 md:hidden">
+        <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-border bg-background/95 px-4 backdrop-blur-md md:hidden">
           <Link to="/app" className="flex items-center gap-2">
             <Logo className="size-7" />
             <Wordmark />
           </Link>
           <div className="flex items-center gap-2">
-            <ThemeToggle />
             <Button variant="ghost" size="icon-sm" aria-label="Log out" onClick={handleSignOut}>
               <LogOut />
             </Button>
           </div>
         </header>
 
-        <main className="flex-1 pb-20 md:pb-0">
+        <main className="bg-grid-paper flex-1 pb-[calc(4rem+env(safe-area-inset-bottom,0px))] md:pb-0">
           {user.isAnonymous && !bannerDismissed && (
             <div className="flex items-center justify-between gap-2 border-b border-border bg-primary/5 px-4 py-3">
               <p className="flex-1 text-sm text-foreground/90">
@@ -183,7 +177,7 @@ export function AppShell() {
 
 function MobileBottomNav() {
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-40 flex h-16 border-t border-border bg-background/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-1px_8px_rgba(0,0,0,0.08)] backdrop-blur-md md:hidden">
+    <nav className="fixed inset-x-0 bottom-0 z-40 flex h-[calc(4rem+env(safe-area-inset-bottom,0px))] border-t border-border bg-background/95 pb-[env(safe-area-inset-bottom,0px)] shadow-[0_-1px_8px_rgba(0,0,0,0.08)] backdrop-blur-md md:hidden">
       {bottomNav.map((item) => (
         <NavLink
           key={item.to}
@@ -192,7 +186,7 @@ function MobileBottomNav() {
           className={({ isActive }) =>
             cn(
               "flex min-h-[44px] min-w-0 flex-1 flex-col items-center justify-center gap-1 px-1",
-              isActive ? "text-primary" : "text-muted-foreground"
+              isActive ? "text-lime-strong" : "text-muted-foreground"
             )
           }
         >

@@ -16,7 +16,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ThemeToggle } from "@/components/brand/theme-toggle"
 import { useAuth } from "@/lib/auth"
 import { cn } from "@/lib/utils"
 
@@ -64,7 +63,7 @@ export function ProfilePage() {
       {/* Page header */}
       <header className="flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1">
-          <p className="text-[10px] font-semibold uppercase tracking-wide text-primary sm:text-xs">
+          <p className="font-mono-d text-[10px] tracking-[0.22em] text-lime-strong uppercase">
             Account
           </p>
           <h1 className="font-display mt-0.5 text-xl font-bold tracking-tight sm:text-3xl">
@@ -86,7 +85,7 @@ export function ProfilePage() {
         <div className="flex items-center gap-3">
           <Avatar className="size-14 shrink-0 sm:size-20">
             <AvatarImage src="" alt={user.name} />
-            <AvatarFallback className="bg-primary/10 text-lg text-primary sm:text-2xl">
+            <AvatarFallback className="bg-primary/10 text-lg text-lime-strong sm:text-2xl">
               {initials}
             </AvatarFallback>
           </Avatar>
@@ -156,23 +155,25 @@ export function ProfilePage() {
         <Card className="rounded-2xl border bg-card shadow-sm">
           <CardContent className="flex items-center justify-between gap-2 py-3 sm:gap-4 sm:py-4">
             <div className="flex items-center gap-2.5 sm:gap-3">
-              <span className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary sm:size-10">
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-lime-strong sm:size-10">
                 <Palette className="size-4 sm:size-5" />
               </span>
               <div>
                 <div className="text-sm font-semibold">Appearance</div>
                 <div className="mt-0.5 text-[11px] text-muted-foreground sm:text-xs">
-                  Light or dark mode.
+                  Ink mode — dark by design.
                 </div>
               </div>
             </div>
-            <ThemeToggle />
+            <span className="font-mono-d border border-border px-2 py-1 text-[10px] tracking-[0.18em] text-lime-strong uppercase">
+              Dark
+            </span>
           </CardContent>
         </Card>
         <Card className="rounded-2xl border bg-card shadow-sm">
           <CardContent className="flex items-center justify-between gap-2 py-3 sm:gap-4 sm:py-4">
             <div className="flex items-center gap-2.5 sm:gap-3">
-              <span className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary sm:size-10">
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-lime-strong sm:size-10">
                 <Bell className="size-4 sm:size-5" />
               </span>
               <div>
@@ -243,7 +244,7 @@ function ToolCard({
   return (
     <Card className="group rounded-2xl border bg-card p-0.5 shadow-sm sm:p-1">
       <Link to={to} className="flex items-center gap-2.5 p-2.5 sm:gap-4 sm:p-3.5">
-        <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary sm:size-11">
+        <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-lime-strong sm:size-11">
           <Icon className="size-4 sm:size-5" strokeWidth={2} />
         </div>
         <div className="min-w-0 flex-1">

@@ -31,7 +31,7 @@ export function SettingsPage() {
     <div className="w-full px-4 py-6 sm:px-6 sm:py-8">
       {/* Page header */}
       <header>
-        <p className="text-xs font-semibold uppercase tracking-wide text-primary">
+        <p className="font-mono-d text-[10px] tracking-[0.22em] text-lime-strong uppercase">
           Account
         </p>
         <h1 className="font-display mt-1 text-2xl font-bold tracking-tight sm:text-3xl">
@@ -45,7 +45,7 @@ export function SettingsPage() {
       {user.isAnonymous && (
         <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-2xl border border-primary/30 bg-primary/5 p-6 sm:flex-row sm:items-center">
           <div className="flex items-start gap-3">
-            <Sparkles className="mt-0.5 size-5 shrink-0 text-primary" />
+            <Sparkles className="mt-0.5 size-5 shrink-0 text-lime-strong" />
             <div>
               <div className="text-sm font-semibold">
                 Anonymous mode is on.
@@ -67,7 +67,7 @@ export function SettingsPage() {
       <Card className="mt-6 gap-0 rounded-2xl border bg-card shadow-sm">
         <CardContent className="py-6">
           <div className="flex items-center gap-2">
-            <span className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
+            <span className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-lime-strong">
               <User className="size-5" />
             </span>
             <h2 className="text-base font-semibold">Profile</h2>
@@ -105,7 +105,7 @@ export function SettingsPage() {
       <Card className="mt-4 gap-0 rounded-2xl border bg-card shadow-sm">
         <CardContent className="py-6">
           <div className="flex items-center gap-2">
-            <span className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
+            <span className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-lime-strong">
               <Eye className="size-5" />
             </span>
             <h2 className="text-base font-semibold">Privacy</h2>
@@ -148,7 +148,7 @@ export function SettingsPage() {
       <Card className="mt-4 gap-0 rounded-2xl border bg-card shadow-sm">
         <CardContent className="py-6">
           <div className="flex items-center gap-2">
-            <span className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
+            <span className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-lime-strong">
               <Bell className="size-5" />
             </span>
             <h2 className="text-base font-semibold">Notifications</h2>

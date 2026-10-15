@@ -36,7 +36,7 @@ export function DashboardPage() {
     return (
       <div className="flex w-full flex-col items-center justify-center px-6 pb-12 pt-16 text-center sm:pb-16 sm:pt-24">
         <div className="flex size-20 items-center justify-center rounded-2xl bg-primary/10">
-          <Flame className="size-16 text-primary" strokeWidth={2} />
+          <Flame className="size-16 text-lime-strong" strokeWidth={2} />
         </div>
         <h1 className="font-display mt-6 max-w-md text-2xl font-bold tracking-tight text-foreground">
           You haven't picked your comeback yet.
@@ -64,21 +64,21 @@ export function DashboardPage() {
   return (
     <div className="w-full px-4 py-6 sm:px-6">
       {/* Streak hero card */}
-      <Card className="gap-4 rounded-2xl border border-primary/20 bg-primary/5 p-6 shadow-sm sm:p-7">
+      <Card className="bg-ink gap-4 border border-ink-line p-6 text-ink-fg shadow-none sm:p-7">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-primary">
+            <p className="font-mono-d text-[10px] tracking-[0.18em] text-primary uppercase">
               Day {streak} · {daySuffix(streak)} streak
             </p>
-            <h1 className="font-display mt-1 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+            <h1 className="font-display mt-2 text-3xl font-extrabold tracking-tight text-ink-fg sm:text-4xl">
               You're doing it.
             </h1>
-            <p className="mt-2 max-w-sm text-sm text-muted-foreground">
+            <p className="mt-2 max-w-sm text-sm text-ink-muted">
               {plan.goal} — {addictionLabel(plan.addiction)} is behind you for
               {streak} {daySuffix(streak)}.
             </p>
           </div>
-          <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
+          <div className="flex size-14 shrink-0 items-center justify-center bg-primary text-accent-foreground">
             <Flame className="size-7" strokeWidth={2} />
           </div>
         </div>
@@ -116,7 +116,10 @@ export function DashboardPage() {
             {milestones.map((m) => (
               <span
                 key={m}
-                className={"font-medium " + (streak >= m ? "text-primary" : "")}
+                className={
+                  "font-mono-d text-[11px] tracking-[0.1em] uppercase " +
+                  (streak >= m ? "font-semibold text-lime-strong" : "")
+                }
               >
                 {m} {daySuffix(m)}
               </span>
@@ -152,7 +155,7 @@ export function DashboardPage() {
         <Card className="rounded-2xl border bg-card shadow-sm">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-base">
-              <Lightbulb className="size-4 text-primary" />
+              <Lightbulb className="size-4 text-lime-strong" />
               Today's science prompt
             </CardTitle>
           </CardHeader>
@@ -167,7 +170,7 @@ export function DashboardPage() {
         <Card className="rounded-2xl border bg-card shadow-sm">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-base">
-              <Dumbbell className="size-4 text-primary" />
+              <Dumbbell className="size-4 text-lime-strong" />
               What you regained
             </CardTitle>
           </CardHeader>
@@ -191,7 +194,7 @@ export function DashboardPage() {
 
       <div className="mt-8 flex flex-col items-start justify-between gap-4 rounded-2xl border border-primary/30 bg-primary/5 p-6 sm:flex-row sm:items-center">
         <div className="flex items-center gap-3">
-          <Sparkles className="size-6 text-primary" />
+          <Sparkles className="size-6 text-lime-strong" />
           <div>
             <div className="text-sm font-semibold">Your identity is forming</div>
             <div className="text-xs text-muted-foreground">
@@ -223,8 +226,8 @@ function StatCard({
   return (
     <Card className="gap-2 rounded-2xl border bg-card shadow-sm">
       <CardContent className="space-y-2">
-        <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-          <span className="flex size-7 items-center justify-center rounded-md bg-primary/10 text-primary">
+        <div className="flex items-center gap-2 font-mono-d text-[10px] tracking-[0.14em] text-muted-foreground uppercase">
+          <span className="flex size-7 items-center justify-center bg-primary text-accent-foreground">
             <Icon className="size-4" />
           </span>
           {label}
@@ -242,7 +245,7 @@ function RegainedRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between border-b pb-2 text-sm last:border-0">
       <span className="text-muted-foreground">{label}</span>
-      <span className="font-semibold text-primary">{value}</span>
+      <span className="font-semibold text-lime-strong">{value}</span>
     </div>
   )
 }

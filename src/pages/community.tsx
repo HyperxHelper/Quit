@@ -9,10 +9,13 @@ export function CommunityPage() {
     <div className="mx-auto w-full max-w-4xl px-4 py-10 sm:px-6">
       <div className="flex items-center gap-3">
         <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
-          <UsersRound className="size-6 text-primary" />
+          <UsersRound className="size-6 text-lime-strong" />
         </div>
         <div>
-          <h1 className="font-display text-2xl font-bold tracking-tight">
+          <p className="font-mono-d text-[10px] tracking-[0.22em] text-lime-strong uppercase">
+            Together · Members
+          </p>
+          <h1 className="font-display mt-1 text-2xl font-bold tracking-tight">
             Community
           </h1>
           <p className="text-sm text-muted-foreground">
@@ -25,7 +28,7 @@ export function CommunityPage() {
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
         <Card className="gap-3 p-6 text-center">
           <div className="mx-auto flex size-11 items-center justify-center rounded-xl bg-primary/10">
-            <UsersRound className="size-5 text-primary" />
+            <UsersRound className="size-5 text-lime-strong" />
           </div>
           <h3 className="text-base font-semibold">Student circles</h3>
           <p className="text-sm text-muted-foreground">
@@ -34,7 +37,7 @@ export function CommunityPage() {
         </Card>
         <Card className="gap-3 p-6 text-center">
           <div className="mx-auto flex size-11 items-center justify-center rounded-xl bg-primary/10">
-            <Video className="size-5 text-primary" />
+            <Video className="size-5 text-lime-strong" />
           </div>
           <h3 className="text-base font-semibold">Creator streams</h3>
           <p className="text-sm text-muted-foreground">
@@ -43,7 +46,7 @@ export function CommunityPage() {
         </Card>
         <Card className="gap-3 p-6 text-center">
           <div className="mx-auto flex size-11 items-center justify-center rounded-xl bg-primary/10">
-            <Radio className="size-5 text-primary" />
+            <Radio className="size-5 text-lime-strong" />
           </div>
           <h3 className="text-base font-semibold">Live accountability</h3>
           <p className="text-sm text-muted-foreground">

@@ -1,7 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react"
-import { Canvas, useFrame } from "@react-three/fiber"
-import { Html, OrbitControls } from "@react-three/drei"
-import * as THREE from "three"
+import { useEffect, useRef, useState } from "react"
 import {
   ArrowRight,
   Calendar,
@@ -25,6 +22,7 @@ import {
 } from "@/components/ui/dialog"
 import { PublicNavbar } from "@/components/layout/public-navbar"
 import { Footer } from "@/components/layout/footer"
+import Reveal from "@/hooks/reveal"
 
 const addictivePatterns = [
   "Doom-scrolling",
@@ -71,151 +69,58 @@ const post = {
     "Why this blog exists, how Quit Initiative & Research Lab operates as a STEM Lab for human being and digital health, and what releases you can expect next.",
 }
 
-function useIsDark() {
-  const [isDark, setIsDark] = useState(() =>
-    document.documentElement.classList.contains("dark")
-  )
-  useEffect(() => {
-    const observer = new MutationObserver(() =>
-      setIsDark(document.documentElement.classList.contains("dark"))
-    )
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    })
-    return () => observer.disconnect()
-  }, [])
-  return isDark
-}
-
-function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(() =>
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  )
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
-    const onChange = () => setReduced(mq.matches)
-    mq.addEventListener("change", onChange)
-    return () => mq.removeEventListener("change", onChange)
-  }, [])
-  return reduced
-}
-
-function Core({ color, animate }: { color: string; animate: boolean }) {
-  const mesh = useRef<THREE.Mesh>(null)
-  useFrame((state) => {
-    if (!mesh.current || !animate) return
-    const s = 1 + Math.sin(state.clock.elapsedTime * 1.6) * 0.05
-    mesh.current.scale.setScalar(s)
-  })
-  return (
-    <group>
-      <mesh ref={mesh}>
-        <sphereGeometry args={[0.55, 32, 32]} />
-        <meshBasicMaterial color={color} />
-      </mesh>
-      <mesh>
-        <icosahedronGeometry args={[0.85, 1]} />
-        <meshBasicMaterial color={color} wireframe transparent opacity={0.35} />
-      </mesh>
-    </group>
-  )
-}
-
-function OrbitScene({
-  ringColor,
-  coreColor,
-  showLabels,
-  animate,
-}: {
-  ringColor: string
-  coreColor: string
-  showLabels: boolean
-  animate: boolean
-}) {
-  const orbit = useRef<THREE.Group>(null)
-  const R = 3
-
-  useFrame((_, delta) => {
-    if (orbit.current && animate) orbit.current.rotation.y += delta * 0.12
-  })
-
-  const nodes = useMemo(
-    () =>
-      addictivePatterns.map((label, i) => ({
-        label,
-        angle: (i / addictivePatterns.length) * Math.PI * 2,
-      })),
-    []
-  )
-
-  const particles = useMemo(() => {
-    const positions = new Float32Array(150 * 3)
-    for (let i = 0; i < positions.length; i += 3) {
-      positions[i] = (Math.random() - 0.5) * 14
-      positions[i + 1] = (Math.random() - 0.5) * 10
-      positions[i + 2] = (Math.random() - 0.5) * 14
+function OrbitVisual() {
+  const nodes = addictivePatterns.map((label, i) => {
+    const angle = (i / addictivePatterns.length) * Math.PI * 2
+    return {
+      label,
+      left: 50 + 48 * Math.cos(angle),
+      top: 50 + 48 * Math.sin(angle),
     }
-    return positions
-  }, [])
+  })
 
   return (
-    <group>
-      <group ref={orbit}>
-        <group rotation={[Math.PI / 2.3, 0, 0]}>
-          <mesh>
-            <torusGeometry args={[R, 0.012, 8, 160]} />
-            <meshBasicMaterial color={ringColor} transparent opacity={0.55} />
-          </mesh>
-          {nodes.map((n) => (
-            <group
-              key={n.label}
-              position={[
-                Math.cos(n.angle) * R,
-                Math.sin(n.angle) * R,
-                0,
-              ]}
-            >
-              <mesh>
-                <sphereGeometry args={[0.07, 16, 16]} />
-                <meshBasicMaterial color={coreColor} />
-              </mesh>
-              {showLabels && (
-                <Html center style={{ pointerEvents: "none" }}>
-                  <span className="pointer-events-none block -translate-y-5 whitespace-nowrap rounded-full border bg-background/85 px-2 py-0.5 text-[10px] font-medium text-muted-foreground backdrop-blur-sm">
-                    {n.label}
-                  </span>
-                </Html>
-              )}
-            </group>
-          ))}
-        </group>
+    <div className="relative h-[340px] overflow-hidden border border-ink-line bg-ink sm:h-[440px]">
+      <div className="bg-grid absolute inset-0 opacity-40" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(163,230,53,0.14),transparent_60%)]" />
 
-        <mesh rotation={[Math.PI / 2.3, 0.9, 0.5]}>
-          <torusGeometry args={[R * 0.68, 0.008, 8, 128]} />
-          <meshBasicMaterial color={ringColor} transparent opacity={0.25} />
-        </mesh>
-        <mesh rotation={[Math.PI / 2.3, -0.7, -0.6]}>
-          <torusGeometry args={[R * 1.25, 0.006, 8, 128]} />
-          <meshBasicMaterial color={ringColor} transparent opacity={0.18} />
-        </mesh>
+      {/* rings */}
+      <div className="absolute top-1/2 left-1/2 h-[220px] w-[220px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-ink-line sm:h-[300px] sm:w-[300px]" />
+      <div className="absolute top-1/2 left-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-ink-line/70 sm:h-[420px] sm:w-[420px]" />
 
-        <points>
-          <bufferGeometry>
-            <bufferAttribute attach="attributes-position" args={[particles, 3]} />
-          </bufferGeometry>
-          <pointsMaterial
-            color={ringColor}
-            size={0.035}
-            transparent
-            opacity={0.35}
-            depthWrite={false}
-          />
-        </points>
-      </group>
+      {/* orbiting nodes */}
+      <div className="absolute top-1/2 left-1/2 h-0 w-0">
+        <div className="animate-orbit">
+          <div className="relative h-[220px] w-[220px] sm:h-[300px] sm:w-[300px]">
+            {nodes.map((node) => (
+              <span
+                key={node.label}
+                className="absolute"
+                style={{ left: `${node.left}%`, top: `${node.top}%` }}
+              >
+                <span className="block size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary" />
+                <span className="animate-orbit-rev absolute top-1/2 left-4 hidden -translate-y-1/2 whitespace-nowrap border border-ink-line bg-ink-2/85 px-2 py-0.5 font-mono-d text-[10px] tracking-[0.14em] text-ink-muted uppercase backdrop-blur sm:block">
+                  {node.label}
+                </span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
 
-      <Core color={coreColor} animate={animate} />
-    </group>
+      {/* core */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+        <div className="flex size-16 items-center justify-center rounded-full bg-primary sm:size-20">
+          <span className="font-mono-d text-[10px] font-semibold tracking-[0.16em] text-accent-foreground uppercase">
+            Lab
+          </span>
+        </div>
+      </div>
+
+      <span className="font-mono-d pointer-events-none absolute right-3 bottom-3 text-[10px] tracking-[0.16em] text-ink-muted uppercase">
+        Drag-free · live orbit
+      </span>
+    </div>
   )
 }
 
@@ -242,19 +147,16 @@ function ArticleBody() {
         anyone with a phone can actually use.
       </p>
 
-      <div className="grid gap-3 py-2 sm:grid-cols-2">
-        {stemPillars.map((p) => (
-          <div
-            key={p.title}
-            className="rounded-xl border bg-muted/40 p-4 leading-relaxed"
-          >
+      <div className="grid gap-px border border-border bg-border py-0 sm:grid-cols-2">
+        {stemPillars.map((pillar) => (
+          <div key={pillar.title} className="bg-card p-4 leading-relaxed">
             <div className="mb-1.5 flex items-center gap-2">
-              <p.icon className="size-4 text-primary" />
-              <span className="font-display text-sm font-bold text-foreground">
-                {p.title}
+              <pillar.icon className="size-4 text-lime-strong" />
+              <span className="font-mono-d text-xs font-semibold tracking-[0.14em] text-foreground uppercase">
+                {pillar.title}
               </span>
             </div>
-            <p className="text-[13.5px] text-muted-foreground">{p.text}</p>
+            <p className="text-[13.5px] text-muted-foreground">{pillar.text}</p>
           </div>
         ))}
       </div>
@@ -282,7 +184,7 @@ function ArticleBody() {
         next.
       </p>
 
-      <div className="rounded-xl border border-primary/30 bg-primary/5 p-5 text-[15px] italic leading-relaxed text-foreground/90">
+      <div className="border border-primary/40 bg-primary/10 p-5 font-serif-d text-[19px] italic leading-relaxed text-foreground/90">
         &ldquo;Technology should serve the human being — not the other way
         around. That single sentence is the reason Quit Lab exists.&rdquo;
       </div>
@@ -297,9 +199,9 @@ function ArticleBody() {
         the whole world invited to collaborate.
       </p>
 
-      <div className="mt-8 rounded-2xl border bg-muted/40 p-5">
+      <div className="mt-8 border border-border bg-muted/60 p-5">
         <div className="flex items-center gap-3">
-          <div className="flex size-11 items-center justify-center rounded-full bg-primary/15 font-display text-sm font-bold text-primary">
+          <div className="flex size-11 items-center justify-center rounded-full bg-primary font-mono-d text-sm font-bold text-accent-foreground">
             AB
           </div>
           <div>
@@ -312,7 +214,7 @@ function ArticleBody() {
         <p className="mt-4 text-sm text-muted-foreground">
           We&apos;re a small project from Tunisia with ambition to cooperate
           with the whole world.{" "}
-          <MapPin className="inline size-3.5 text-primary" /> If our mission
+          <MapPin className="inline size-3.5 text-lime-strong" /> If our mission
           speaks to you, reach out — every collaboration makes the next
           release possible.
         </p>
@@ -324,18 +226,7 @@ function ArticleBody() {
 export function BlogPage() {
   const [open, setOpen] = useState(false)
   const [count, setCount] = useState(0)
-  const [showLabels, setShowLabels] = useState(false)
   const cycleRef = useRef<HTMLDivElement>(null)
-  const isDark = useIsDark()
-  const reduced = usePrefersReducedMotion()
-
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 640px)")
-    const onChange = () => setShowLabels(mq.matches)
-    onChange()
-    mq.addEventListener("change", onChange)
-    return () => mq.removeEventListener("change", onChange)
-  }, [])
 
   useEffect(() => {
     const el = cycleRef.current
@@ -357,86 +248,71 @@ export function BlogPage() {
     }
   }, [])
 
-  const ringColor = isDark ? "#34d399" : "#059669"
-  const coreColor = isDark ? "#10b981" : "#047857"
-
   return (
     <div className="flex min-h-screen flex-col">
       <PublicNavbar />
       <main className="flex-1">
         {/* ── Hero ──────────────────────────────────────────── */}
-        <section className="border-b">
-          <div className="mx-auto w-full max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
-            <Badge variant="secondary" className="items-center gap-1.5">
-              <Rss className="size-3" />
-              Quit Lab — Official Release Channel
-            </Badge>
-            <h1 className="font-display mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl">
-              Quit <span className="text-primary">Blog</span>
-            </h1>
-            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              Releases, lab notes and outcomes from Quit Initiative &amp;
-              Research Lab — a STEM Lab working for human being and digital
-              health.
-            </p>
+        <section className="bg-ink relative overflow-hidden border-b border-ink-line text-ink-fg">
+          <div className="bg-grid absolute inset-0 opacity-50" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(163,230,53,0.08),transparent_60%)]" />
+          <div className="relative mx-auto w-full max-w-[1400px] px-5 py-20 md:px-10 md:py-24">
+            <Reveal>
+              <p className="font-mono-d text-[10px] tracking-[0.22em] text-primary uppercase">
+                § — Quit Lab · Official release channel
+              </p>
+              <h1 className="mt-5 max-w-3xl text-5xl leading-[0.95] font-semibold tracking-[-0.03em] md:text-7xl">
+                Quit{" "}
+                <span className="font-serif-d text-primary font-normal italic">
+                  Blog.
+                </span>
+              </h1>
+              <p className="mt-6 max-w-2xl leading-relaxed text-ink-muted md:text-lg">
+                Releases, lab notes and outcomes from Quit Initiative &amp;
+                Research Lab — a STEM Lab working for human being and digital
+                health.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-ink-line pt-5">
+                <span className="font-mono-d flex items-center gap-2 text-[10px] tracking-[0.18em] text-ink-muted uppercase">
+                  <Rss className="h-3.5 w-3.5 text-primary" /> Release notes
+                </span>
+                <span className="font-mono-d text-[10px] tracking-[0.18em] text-ink-muted uppercase">
+                  Lab notes
+                </span>
+                <span className="font-mono-d text-[10px] tracking-[0.18em] text-ink-muted uppercase">
+                  Research outcomes
+                </span>
+              </div>
+            </Reveal>
           </div>
         </section>
 
-        {/* ── Three.js Orbit ────────────────────────────────── */}
-        <section className="border-b bg-muted/30">
+        {/* ── Live orbit (pure CSS — no WebGL) ─────────────── */}
+        <section className="border-b border-border bg-muted/30">
           <div className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6">
             <div className="mb-6 text-center">
-              <Badge variant="secondary" className="items-center gap-1.5">
-                <Sparkles className="size-3" />
-                Live Orbit
-              </Badge>
+              <p className="font-mono-d text-[10px] tracking-[0.22em] text-muted-foreground uppercase">
+                Live orbit
+              </p>
               <h2 className="font-display mt-4 text-2xl font-extrabold tracking-tight sm:text-3xl">
                 The patterns orbiting the modern world
               </h2>
               <p className="mx-auto mt-2 max-w-xl text-sm text-muted-foreground">
-                Drag to orbit. At the center sits the lab — beneath it, the
-                blogging cycle counts every release, starting from 0.
+                At the center sits the lab — beneath it, the blogging cycle
+                counts every release, starting from 0.
               </p>
             </div>
-
-            <div className="relative h-[340px] overflow-hidden rounded-2xl border bg-gradient-to-b from-primary/5 to-background sm:h-[440px]">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(16,185,129,0.14),transparent_60%)]" />
-              <Canvas
-                camera={{ position: [0, 2, 8.5], fov: 45 }}
-                dpr={[1, 2]}
-                gl={{ antialias: true, alpha: true }}
-                style={{ position: "relative" }}
-              >
-                <OrbitScene
-                  ringColor={ringColor}
-                  coreColor={coreColor}
-                  showLabels={showLabels}
-                  animate={!reduced}
-                />
-                <OrbitControls
-                  enableZoom={false}
-                  enablePan={false}
-                  autoRotate={!reduced}
-                  autoRotateSpeed={0.7}
-                  minPolarAngle={Math.PI / 5}
-                  maxPolarAngle={Math.PI / 2.1}
-                />
-              </Canvas>
-              <span className="pointer-events-none absolute right-3 bottom-3 text-[11px] text-muted-foreground">
-                Drag to orbit
-              </span>
-            </div>
+            <OrbitVisual />
           </div>
         </section>
 
         {/* ── Blogging Cycle ────────────────────────────────── */}
-        <section ref={cycleRef} className="scroll-mt-20">
+        <section ref={cycleRef}>
           <div className="mx-auto w-full max-w-3xl px-4 py-16 sm:px-6">
             <div className="mb-10 text-center">
-              <Badge variant="secondary" className="items-center gap-1.5">
-                <Rss className="size-3" />
-                Blogging Cycle
-              </Badge>
+              <p className="font-mono-d text-[10px] tracking-[0.22em] text-muted-foreground uppercase">
+                Blogging cycle
+              </p>
               <h2 className="font-display mt-4 text-2xl font-extrabold tracking-tight sm:text-3xl">
                 Where Quit Lab publishes its work
               </h2>
@@ -444,8 +320,8 @@ export function BlogPage() {
                 The Quit Lab Blog is the official publishing channel of Quit
                 Initiative &amp; Research Lab — where release notes, research
                 findings and project outcomes are shared openly with our
-                community. Every published post advances the counter below;
-                the cycle begins at 0.
+                community. Every published post advances the counter below; the
+                cycle begins at 0.
               </p>
             </div>
 
@@ -453,7 +329,7 @@ export function BlogPage() {
               <div className="flex items-baseline gap-4">
                 <span
                   key={count}
-                  className="font-display animate-in fade-in zoom-in-95 text-7xl font-extrabold text-primary tabular-nums sm:text-8xl"
+                  className="font-mono-d animate-in fade-in zoom-in-95 text-7xl font-semibold text-lime-strong tabular-nums sm:text-8xl"
                 >
                   {count}
                 </span>
@@ -461,7 +337,7 @@ export function BlogPage() {
                   <p className="text-sm font-semibold">
                     {count === 0 ? "awaiting first release" : "post published"}
                   </p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="font-mono-d text-[10px] tracking-[0.14em] text-muted-foreground uppercase">
                     Quit Lab blogging cycle · starting from 0
                   </p>
                 </div>
@@ -471,29 +347,29 @@ export function BlogPage() {
                 <button
                   type="button"
                   onClick={() => setOpen(true)}
-                  className="group animate-in fade-in slide-in-from-bottom-4 mt-10 w-full cursor-pointer rounded-2xl border bg-card p-6 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                  className="group animate-in fade-in slide-in-from-bottom-4 mt-10 w-full cursor-pointer border border-border bg-card p-6 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/60 hover:shadow-lg hover:shadow-primary/10 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                 >
-                  <div className="mb-4 flex flex-wrap items-center gap-2">
-                    <Badge variant="secondary" className="gap-1.5">
+                  <div className="mb-4 flex flex-wrap items-center gap-3">
+                    <span className="font-mono-d flex items-center gap-1.5 border border-border px-2.5 py-1 text-[10px] tracking-[0.14em] text-muted-foreground uppercase">
                       <Calendar className="size-3" />
                       {post.date}
-                    </Badge>
-                    <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                    </span>
+                    <span className="font-mono-d flex items-center gap-1 text-[10px] tracking-[0.14em] text-muted-foreground uppercase">
                       <Clock className="size-3" />
                       {post.readTime}
                     </span>
                   </div>
 
-                  <h3 className="font-display text-xl font-bold transition-colors group-hover:text-primary sm:text-2xl">
+                  <h3 className="font-display text-xl font-bold transition-colors group-hover:text-lime-strong sm:text-2xl">
                     {post.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     {post.excerpt}
                   </p>
 
-                  <div className="mt-5 flex items-center justify-between border-t pt-4">
+                  <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
                     <div className="flex min-w-0 items-center gap-3">
-                      <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/15 font-display text-xs font-bold text-primary">
+                      <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary font-mono-d text-xs font-bold text-accent-foreground">
                         AB
                       </div>
                       <div className="min-w-0">
@@ -505,7 +381,7 @@ export function BlogPage() {
                         </p>
                       </div>
                     </div>
-                    <span className="ml-3 flex shrink-0 items-center gap-1 text-sm font-medium text-primary">
+                    <span className="ml-3 flex shrink-0 items-center gap-1 text-sm font-medium text-lime-strong">
                       Read article
                       <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
                     </span>
@@ -513,8 +389,8 @@ export function BlogPage() {
                 </button>
               )}
 
-              <div className="mt-8 flex items-center gap-2 text-xs text-muted-foreground">
-                <HeartPulse className="size-3.5 text-primary" />
+              <div className="font-mono-d mt-8 flex items-center gap-2 text-[10px] tracking-[0.14em] text-muted-foreground uppercase">
+                <HeartPulse className="size-3.5 text-lime-strong" />
                 Science · Engineering · Technology · Mathematics — for human
                 being &amp; digital health
               </div>
@@ -529,16 +405,16 @@ export function BlogPage() {
         <DialogContent className="max-h-[88vh] w-full overflow-y-auto p-0 sm:max-w-3xl">
           <div className="p-6 sm:p-10">
             <DialogHeader className="gap-4">
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="flex flex-wrap items-center gap-3">
                 <Badge className="gap-1.5">
                   <Sparkles className="size-3" />
                   Release
                 </Badge>
-                <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                <span className="font-mono-d flex items-center gap-1 text-[10px] tracking-[0.14em] text-muted-foreground uppercase">
                   <Calendar className="size-3" />
                   {post.date}
                 </span>
-                <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                <span className="font-mono-d flex items-center gap-1 text-[10px] tracking-[0.14em] text-muted-foreground uppercase">
                   <Clock className="size-3" />
                   {post.readTime}
                 </span>
@@ -548,8 +424,8 @@ export function BlogPage() {
                 {post.title}
               </DialogTitle>
 
-              <div className="flex items-center gap-3 border-b pb-5">
-                <div className="flex size-10 items-center justify-center rounded-full bg-primary/15 font-display text-sm font-bold text-primary">
+              <div className="flex items-center gap-3 border-b border-border pb-5">
+                <div className="flex size-10 items-center justify-center rounded-full bg-primary font-mono-d text-sm font-bold text-accent-foreground">
                   AB
                 </div>
                 <div>

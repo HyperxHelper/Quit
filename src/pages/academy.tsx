@@ -67,10 +67,13 @@ export function AcademyPage() {
     <div className="mx-auto w-full max-w-4xl px-4 py-10 sm:px-6">
       <div className="flex items-center gap-3">
         <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
-          <GraduationCap className="size-6 text-primary" />
+          <GraduationCap className="size-6 text-lime-strong" />
         </div>
         <div>
-          <h1 className="font-display text-2xl font-bold tracking-tight">
+          <p className="font-mono-d text-[10px] tracking-[0.22em] text-lime-strong uppercase">
+            Learn · Courses &amp; material
+          </p>
+          <h1 className="font-display mt-1 text-2xl font-bold tracking-tight">
             Academy
           </h1>
           <p className="text-sm text-muted-foreground">
@@ -84,7 +87,7 @@ export function AcademyPage() {
         {tracks.map((track) => (
           <Card key={track.title} className="gap-3 p-6">
             <div className="flex size-11 items-center justify-center rounded-xl bg-primary/10">
-              <track.icon className="size-5 text-primary" />
+              <track.icon className="size-5 text-lime-strong" />
             </div>
             <h3 className="text-base font-semibold">{track.title}</h3>
             <p className="text-sm text-muted-foreground">{track.text}</p>
@@ -111,7 +114,7 @@ export function AcademyPage() {
           {lessons.map((lesson) => (
             <Card key={lesson.title} className="gap-3 p-5">
               <div className="flex items-center gap-4">
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-lime-strong">
                   {lesson.type === "Video" ? (
                     <Play className="size-4" />
                   ) : (
@@ -140,7 +143,7 @@ export function AcademyPage() {
       </div>
 
       <div className="mt-8 flex items-start gap-3 rounded-xl border border-primary/30 bg-primary/5 p-4 text-sm">
-        <ShieldCheck className="mt-0.5 size-5 shrink-0 text-primary" />
+        <ShieldCheck className="mt-0.5 size-5 shrink-0 text-lime-strong" />
         <p className="text-muted-foreground">
           <span className="font-medium text-foreground">
             The goal of the Academy:

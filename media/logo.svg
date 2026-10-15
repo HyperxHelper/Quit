@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="204" height="52" viewBox="0 0 204 52" role="img" aria-label="Quit Lab">
+  <rect width="52" height="52" fill="#a3e635" />
+  <g fill="none" stroke="#0a0a0a" stroke-width="3" stroke-linecap="round" transform="scale(1.625)">
+    <path d="M10 20c0-3 0-6 0-9" />
+    <path d="M10 20c4-3 8-3 12 0" />
+  </g>
+  <circle cx="35.75" cy="17.88" r="3.9" fill="#0a0a0a" />
+  <rect x="52" width="152" height="52" fill="#0a0a0a" />
+  <text
+    x="70"
+    y="34"
+    font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace"
+    font-size="20"
+    font-weight="600"
+    letter-spacing="2.5"
+    fill="#f5f5f5"
+  >QUIT<tspan fill="#a3e635">⁄</tspan>LAB</text>
+</svg>

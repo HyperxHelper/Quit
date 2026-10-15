@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/logo.png" width="64" height="64" alt="Quit Initiative logo" />
+  <img src="media/logo.svg" width="204" height="52" alt="Quit Lab logo" />
 </p>
 <h1 align="center">Quit Initiative</h1>
 <p align="center">
@@ -14,10 +14,42 @@
 </p>
 
 <p align="center">
-  <strong>v0.19 — mobile-first preview.</strong> This copy lives on GitHub so you can explore
+  <strong>v0.20 — the Quit Lab design.</strong> This copy lives on GitHub so you can explore
   and try everything before it ships for real. A <strong>full membership is coming soon</strong>.
   Until then: use <strong>Anonymous mode</strong> and your progress stays on your device.
 </p>
+
+---
+
+## Status — where we are right now
+
+We're collecting data, enhancing the service, and inviting new members to test
+our products:
+
+- **Collecting data** — preview sessions feed the protocols: on-device
+  anonymous progress, member feedback and usage signals, so every flow and
+  every claim is measured before launch.
+- **Enhancing the service** — the site just moved to the new Quit Lab design
+  (ink + lime, mono/serif type, sticky mobile navigation, route-level code
+  splitting) and the product behind it improves release by release.
+- **Inviting new members** — we're opening the preview to more testers. Join
+  anonymously, break a habit, tell us what breaks: founding testers and
+  volunteers get verified certificates, digital badges and a real say in what
+  ships next.
+
+## Brand — the Quit Lab logo
+
+Two logos carry the identity, both set in the lab's mono type on ink
+(`#0a0a0a`) with the lime accent (`#a3e635`):
+
+- **Homepage / navbar — the new lockup** (shown at the top of this README):
+  a lime square mark holding the hand-drawn curve-and-dot glyph in ink, locked
+  to the mono wordmark `QUIT⁄LAB` with the `⁄` divider in lime. It sits in the
+  sticky navbar on every public page and in the app shell, always on the ink
+  bar.
+- **Footer — the lab logo at full width:** the oversized `Quit⁄Lab` wordmark
+  stretched edge to edge along the bottom of the footer, drawn in the border-ink
+  tone so it reads as a watermark, with the `⁄` again in lime.
 
 ---
 
@@ -51,16 +83,18 @@ Most "quit" apps sell willpower myths. Quit does the opposite:
 - **Quit Lab** — the research engine: AI, data science and community fieldwork
   translated into accessible content in +5 languages. Visit `/research` to
   explore our domains, methodology and volunteer opportunities. The home page
-  opens with an autoplaying **Quit Lab intro video** framed right under the
-  hero CTA, so visitors watch the pitch before scrolling on.
-- **Quit Blog** ⭐ — the official release channel of the lab: releases, research
-  notes and project outcomes, opening with an interactive Three.js orbit of the
-  modern world's most addictive patterns. Visit `/blog` — marked with a golden
-  star in the navbar so you can't miss it.
-- **Interactive hero slideshow** — Three.js-powered landing experience with
-  animated particles, floating geometry and auto-cycling content slides.
-- **Dark mode** — built on theme tokens, so the app is as comfortable at 2am as
-  it is in daylight.
+  opens with an autoplaying **Quit Lab intro video** inside the hero — muted,
+  with a pulsing now-playing pill and a "Watch on YouTube" fallback — so
+  visitors watch the pitch before scrolling on.
+- **Quit Blog** — the official release channel of the lab: releases, research
+  notes and project outcomes, opening with an animated **pure-CSS orbit** of the
+  modern world's most addictive patterns. Visit `/blog`.
+- **Sticky, mobile-first shell** — the public navbar stays stuck to the top, the
+  app gets a sticky top bar plus a safe-area-aware fixed bottom nav, and a
+  sticky mobile action bar keeps *Log in / Join the lab* one tap away.
+- **Ink-first design** — dark (`#0a0a0a` ink + `#a3e635` lime) is the standard
+  theme across the whole website. The light theme and its toggle were removed;
+  every page ships in Quit Lab ink mode.
 
 > "A failure to quit is not a failure of the person. Relapse is a data point,
 > not a verdict." — the Quit mindset
@@ -134,13 +168,13 @@ lab grows in the open.
   how Quit Initiative & Research Lab operates as a **STEM Lab** — using
   Science, Engineering, Technology and Mathematics for the favour of the
   human being and digital health.
-- **A Three.js orbit** — the page opens with an interactive, draggable
-  orbit of the most addictive patterns the modern world is facing —
+- **A CSS orbit** — the page opens with an animated, pure-CSS orbit of the
+  most addictive patterns the modern world is facing —
   doom-scrolling, short-form video, likes & validation, push notifications,
   endless gaming, vaping, gambling and nicotine — with the blogging cycle
-  nested underneath.
-- **Dark from day one** — the interface ships in dark mode, and the navbar
-  theme toggle switches to the bright theme whenever the reader wants it.
+  nested underneath. No WebGL, no three.js: it renders instantly on a phone.
+- **Ink only** — dark mode is the standard theme across the whole site;
+  there is no light theme and no theme toggle anymore.
 - **From the lab** — written by **Ahmed Ben Abderrazek**, Registered Nurse
   and CEO of Quit Lab & Initiative. A small project from Tunisia with
   ambition to cooperate with the whole world.
@@ -167,7 +201,7 @@ An open stack, an honest team:
 
 | Area | What it does |
 | --- | --- |
-| **Home** | Three.js hero slideshow, autoplaying Quit Lab intro video, streak hero, daily check-in, quit-march progress, wins you regained |
+| **Home** | Sticky navbar, autoplaying Quit Lab intro video, streak hero, section navigation (Science, Programs, Method, Impact), research, programs, impact, volunteer & donate sections |
 | **My plan** | Pick the one habit to quit, set a start date, get savings estimate |
 | **Science** | Peer-reviewed sources made readable for a student |
 | **Community** | Student circles, creator streams, live accountability (Phase 3) |
@@ -178,16 +212,15 @@ An open stack, an honest team:
 | **Clothing** | Student-only merch that makes quitting visible |
 | **Our Code** | The constitution — how we support and care about each other |
 | **Quit Lab** | Research division — domains, AI/ML in health, translation, training and volunteer program |
-| **Quit Blog** | Official blog — Three.js pattern orbit, blogging cycle counted from 0, first release "Introducing Quit Blog" |
+| **Quit Blog** | Official blog — pure-CSS pattern orbit, blogging cycle counted from 0, first release "Introducing Quit Blog" |
 | **Settings** | Profile, privacy, notifications — tucked under Profile |
-| **Sources** | Public-facing science log — ResearchGate, Nature, PubMed, NIH and more |
 
 ## Tech stack
 
 - React 19 + TypeScript + Vite
-- Tailwind CSS v4 + shadcn/ui (theme-token light/dark mode)
-- React Router v7
-- Three.js + @react-three/fiber + @react-three/drei (interactive hero slideshow)
+- Tailwind CSS v4 + shadcn/ui (ink-only dark theme tokens)
+- React Router v7 (HashRouter — works on GitHub Pages)
+- Route-level code splitting with `React.lazy`; no three.js — every visual is CSS/SVG
 - Lucide icons
 - Zod (form validation)
 - Local-first auth (concept-safe hashing), backend pipeline at launch.
@@ -211,14 +244,42 @@ npm run preview
 
 ```
 src/
-  components/     # shadcn/ui components + layout pieces (navbar, footer, sponsor, sources, hero-slideshow)
+  components/
+    landing/      # hero, marquee, pillars, research-lab, programs, method, impact, philosophy, volunteer, donate
+    layout/       # sticky public navbar + footer
+    auth/ brand/ ui/   # auth layout, logo lockup, shadcn/ui pieces
+  hooks/          # reveal — scroll-in animation, reduced-motion aware
   pages/          # one file per route
-  lib/            # auth, zod schemas, addiction helpers
+  lib/            # auth, zod schemas, section-nav helpers, addiction helpers
   data/           # data sources ready for backup/live integration (e.g. member-stories)
-  assets/         # static brand assets
+media/            # logo + README badges (ink & lime)
 ```
 
 ## Key improvements
+
+### v0.20
+- **New Quit Lab design** — full migration to the ink & lime system: palette
+  (`#0a0a0a` ink, `#141414` ink-2, `#a3e635` lime), Inter + JetBrains Mono +
+  Instrument Serif, sharp corners, grid-paper sections, mono `§` eyebrows and
+  serif-italic accents across the landing, blog, research, code, auth and every
+  in-app page.
+- **New logos** — the navbar lockup (`QUIT⁄LAB` with the lime `⁄` over a lime
+  square mark), the giant footer wordmark, and README badges + favicon
+  recolored to ink & lime (`media/logo.svg`).
+- **Dark is the standard** — the light theme and the theme toggle were removed;
+  the document ships with the `dark` class and ink tokens live in `:root`.
+- **Sticky mobile experience** — sticky public navbar with a scroll-locked,
+  scrollable menu; sticky app top bar; fixed bottom nav with correct
+  safe-area height; a sticky mobile action bar (Log in / Join the lab);
+  `scroll-padding-top` so anchors land under the header; `overflow-x: clip` +
+  `scrollbar-gutter: stable` so nothing slides sideways; `min-h-dvh` layouts.
+- **Rendering performance** — route-level code splitting (`React.lazy`) and
+  three.js removed (hero slideshow gone, blog orbit is pure CSS). Entry bundle
+  ~264 kB (83 kB gzip), pages ship as their own chunks.
+- **HashRouter fixes** — no more raw `#anchor` hrefs; section links go through
+  a `useScrollToSection` hook that navigates first, then scrolls.
+- **Housekeeping** — removed the `quit-lab/` reference copy (11k+ files), logs,
+  build output, unused assets and the unused dropdown-menu component.
 
 ### v0.19
 - **Quit Lab intro video** — the landing hero now embeds the official

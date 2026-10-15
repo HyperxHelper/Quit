@@ -1,157 +1,218 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { Heart, Menu, Star, X } from "lucide-react"
+import { ArrowUpRight, Menu, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { Logo, Wordmark } from "@/components/brand/logo"
-import { ThemeToggle } from "@/components/brand/theme-toggle"
+import { useScrollToSection } from "@/lib/nav"
 import { useAuth } from "@/lib/auth"
-import { cn } from "@/lib/utils"
 
-type NavLinkItem =
-  | { label: string; to: string; highlight?: boolean }
-  | { label: string; href: string; highlight?: boolean }
-
-const links: NavLinkItem[] = [
-  { label: "Why Quit", href: "#why" },
-  { label: "The Science", href: "#science" },
-  { label: "How it works", href: "#how" },
-  { label: "Our Code", to: "/code" },
-  { label: "Research", to: "/research" },
-  { label: "Blog", to: "/blog", highlight: true },
+const SECTIONS = [
+  { label: "Science", id: "science" },
+  { label: "Programs", id: "programs" },
+  { label: "Method", id: "method" },
+  { label: "Impact", id: "impact" },
 ]
 
-const sponsorHref = "/#sponsor"
+const PAGES = [
+  { label: "Research", to: "/research" },
+  { label: "Blog", to: "/blog" },
+  { label: "Code", to: "/code" },
+]
 
 export function PublicNavbar() {
   const { user } = useAuth()
   const [open, setOpen] = useState(false)
+  const [ctaVisible, setCtaVisible] = useState(false)
   const navigate = useNavigate()
+  const scrollToSection = useScrollToSection()
+
+  const close = () => setOpen(false)
+
+  useEffect(() => {
+    const onScroll = () => setCtaVisible(window.scrollY > 320)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : ""
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [open])
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center gap-2">
-          <Logo />
-          <Wordmark />
+    <>
+      <header className="sticky top-0 z-50 w-full border-b border-ink-line bg-ink/95 backdrop-blur-md">
+      <div className="mx-auto flex h-16 w-full max-w-[1400px] items-center justify-between px-5 md:px-10">
+        <Link to="/" onClick={close} className="flex items-baseline gap-2">
+          <span className="font-mono-d text-sm font-semibold tracking-[0.22em] uppercase">
+            Quit<span className="text-primary">⁄</span>Lab
+          </span>
+          <span className="font-mono-d hidden text-[10px] tracking-[0.18em] text-ink-muted uppercase sm:inline">
+            Initiative &amp; R&amp;D
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
-          {links.map((link) => (
-            "to" in link ? (
-              <Link
-                key={link.to}
-                to={link.to}
-                onClick={() => setOpen(false)}
-                className="flex items-center gap-1 rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-              >
-                {link.label}
-                {link.highlight && (
-                  <Star
-                    aria-hidden
-                    className="size-3 fill-amber-400 text-amber-400 drop-shadow-[0_0_5px_rgba(250,204,21,0.7)]"
-                  />
-                )}
-              </Link>
-            ) : (
-              <a
-                key={link.href}
-                href={link.href}
-                className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-              >
-                {link.label}
-              </a>
-            )
+        <nav className="hidden items-center gap-7 lg:flex">
+          {SECTIONS.map((section) => (
+            <button
+              key={section.id}
+              type="button"
+              onClick={() => {
+                close()
+                scrollToSection(section.id)
+              }}
+              className="font-mono-d cursor-pointer text-[11px] tracking-[0.18em] text-ink-muted uppercase transition-colors hover:text-ink-fg"
+            >
+              {section.label}
+            </button>
+          ))}
+          {PAGES.map((page) => (
+            <Link
+              key={page.to}
+              to={page.to}
+              className="font-mono-d text-[11px] tracking-[0.18em] text-ink-muted uppercase transition-colors hover:text-ink-fg"
+            >
+              {page.label}
+            </Link>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 md:flex">
-          <ThemeToggle />
-          <Button variant="ghost" asChild className="gap-1.5 text-primary">
-            <a href={sponsorHref}>
-              <Heart className="size-4" /> Sponsor us
-            </a>
-          </Button>
+        <div className="flex items-center gap-3">
           {user ? (
-            <Button onClick={() => navigate("/app")}>Open dashboard</Button>
+            <Button
+              className="hidden rounded-none font-mono-d text-[11px] tracking-[0.18em] uppercase sm:inline-flex"
+              asChild
+            >
+              <Link to="/app">
+                Dashboard <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+              </Link>
+            </Button>
           ) : (
             <>
-              <Button variant="ghost" onClick={() => navigate("/login")}>
+              <Button
+                variant="ghost"
+                className="hidden font-mono-d text-[11px] tracking-[0.18em] text-ink-muted uppercase hover:text-accent-foreground sm:inline-flex"
+                onClick={() => navigate("/login")}
+              >
                 Log in
               </Button>
-              <Button onClick={() => navigate("/signup")}>Get started</Button>
+              <Button
+                className="hidden rounded-none font-mono-d text-[11px] tracking-[0.18em] uppercase sm:inline-flex"
+                asChild
+              >
+                <Link to="/signup">
+                  Join the lab <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+                </Link>
+              </Button>
             </>
           )}
-        </div>
-
-        <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            aria-label="Toggle menu"
+          <button
+            type="button"
+            className="inline-flex h-9 w-9 cursor-pointer items-center justify-center border border-ink-line text-ink-fg transition-colors hover:border-primary hover:text-primary lg:hidden"
             onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+            aria-expanded={open}
           >
-            {open ? <X /> : <Menu />}
-          </Button>
+            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
         </div>
       </div>
 
-      <div
-        className={cn(
-          "border-t bg-background/95 backdrop-blur md:hidden",
-          open ? "block" : "hidden"
-        )}
-      >
-        <nav className="flex flex-col gap-1 px-4 py-4">
-          {links.map((link) => (
-            "to" in link ? (
+      {open && (
+        <div className="border-t border-ink-line bg-ink max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain px-5 py-4 lg:hidden">
+          <nav className="flex flex-col">
+            {SECTIONS.map((section) => (
+              <button
+                key={section.id}
+                type="button"
+                onClick={() => {
+                  close()
+                  scrollToSection(section.id)
+                }}
+                className="font-mono-d cursor-pointer border-b border-ink-line/60 py-3 text-left text-xs tracking-[0.18em] text-ink-muted uppercase last:border-0 hover:text-ink-fg"
+              >
+                {section.label}
+              </button>
+            ))}
+            {PAGES.map((page) => (
               <Link
-                key={link.to}
-                to={link.to}
-                onClick={() => setOpen(false)}
-                className="flex items-center gap-1 rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                key={page.to}
+                to={page.to}
+                onClick={close}
+                className="font-mono-d border-b border-ink-line/60 py-3 text-xs tracking-[0.18em] text-ink-muted uppercase last:border-0 hover:text-ink-fg"
               >
-                {link.label}
-                {link.highlight && (
-                  <Star
-                    aria-hidden
-                    className="size-3 fill-amber-400 text-amber-400 drop-shadow-[0_0_5px_rgba(250,204,21,0.7)]"
-                  />
-                )}
+                {page.label}
               </Link>
-            ) : (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-              >
-                {link.label}
-              </a>
-            )
-          ))}
-          <div className="mt-2 flex flex-col gap-2">
+            ))}
+          </nav>
+          <div className="mt-4 flex flex-col gap-2">
             {user ? (
-              <Button onClick={() => navigate("/app")}>
-                Open dashboard
+              <Button className="rounded-none font-mono-d text-[11px] tracking-[0.18em] uppercase" asChild>
+                <Link to="/app" onClick={close}>
+                  Dashboard <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+                </Link>
               </Button>
             ) : (
               <>
-                <Button variant="outline" asChild>
-                  <a href={sponsorHref}>
-                    <Heart className="size-4" /> Sponsor us
-                  </a>
-                </Button>
-                <Button variant="outline" onClick={() => navigate("/login")}>
+                <Button
+                  variant="outline"
+                  className="rounded-none border-ink-line bg-transparent font-mono-d text-[11px] tracking-[0.18em] text-ink-fg uppercase hover:border-primary hover:bg-transparent hover:text-primary"
+                  onClick={() => {
+                    close()
+                    navigate("/login")
+                  }}
+                >
                   Log in
                 </Button>
-                <Button onClick={() => navigate("/signup")}>Get started</Button>
+                <Button className="rounded-none font-mono-d text-[11px] tracking-[0.18em] uppercase" asChild>
+                  <Link to="/signup" onClick={close}>
+                    Join the lab <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+                  </Link>
+                </Button>
               </>
             )}
           </div>
-        </nav>
-      </div>
-    </header>
+        </div>
+      )}
+      </header>
+
+      {ctaVisible && !open && (
+        <div className="animate-in fade-in slide-in-from-bottom-2 duration-200 fixed inset-x-0 bottom-0 z-40 border-t border-ink-line bg-ink/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden">
+          <div className="flex h-16 items-center gap-2 px-5">
+            {user ? (
+              <Button
+                className="h-11 w-full rounded-none font-mono-d text-[11px] tracking-[0.18em] uppercase"
+                asChild
+              >
+                <Link to="/app">
+                  Open dashboard <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+                </Link>
+              </Button>
+            ) : (
+              <>
+                <Button
+                  variant="outline"
+                  className="h-11 flex-1 rounded-none border-ink-line bg-transparent font-mono-d text-[11px] tracking-[0.18em] text-ink-fg uppercase hover:border-primary hover:bg-transparent hover:text-primary"
+                  onClick={() => navigate("/login")}
+                >
+                  Log in
+                </Button>
+                <Button
+                  className="h-11 flex-1 rounded-none font-mono-d text-[11px] tracking-[0.18em] uppercase"
+                  asChild
+                >
+                  <Link to="/signup">
+                    Join the lab <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+                  </Link>
+                </Button>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   )
 }

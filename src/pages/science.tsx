@@ -111,10 +111,13 @@ export function SciencePage() {
     <div className="mx-auto w-full max-w-4xl px-4 py-10 sm:px-6">
       <div className="flex items-center gap-3">
         <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
-          <BookOpen className="size-6 text-primary" />
+          <BookOpen className="size-6 text-lime-strong" />
         </div>
         <div>
-          <h1 className="font-display text-2xl font-bold tracking-tight">
+          <p className="font-mono-d text-[10px] tracking-[0.22em] text-lime-strong uppercase">
+            Lab · Evidence base
+          </p>
+          <h1 className="font-display mt-1 text-2xl font-bold tracking-tight">
             Science library
           </h1>
           <p className="text-sm text-muted-foreground">
@@ -139,7 +142,7 @@ export function SciencePage() {
                 href={paper.link}
                 target="_blank"
                 rel="noreferrer"
-                className="flex size-9 shrink-0 items-center justify-center rounded-lg border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+                className="flex size-9 shrink-0 items-center justify-center rounded-lg border text-muted-foreground transition-colors hover:border-primary hover:text-lime-strong"
                 aria-label={`Open ${paper.title}`}
               >
                 <ExternalLink className="size-4" />
@@ -160,7 +163,7 @@ export function SciencePage() {
       </div>
 
       <div className="mt-8 flex items-start gap-3 rounded-xl border border-primary/30 bg-primary/5 p-4 text-sm">
-        <ShieldCheck className="mt-0.5 size-5 shrink-0 text-primary" />
+        <ShieldCheck className="mt-0.5 size-5 shrink-0 text-lime-strong" />
         <p className="text-muted-foreground">
           <span className="font-medium text-foreground">Why sources matter:</span>{" "}
           the science here is why Quit doesn't rely on willpower myths. You get

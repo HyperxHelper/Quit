@@ -1,5 +1,4 @@
 import {
-  Microscope,
   BarChart3,
   Brain,
   Globe,
@@ -17,7 +16,6 @@ import {
   Lightbulb,
   Rocket,
   ShieldCheck,
-  Languages,
   Video,
   Palette,
   TrendingUp,
@@ -41,6 +39,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { PublicNavbar } from "@/components/layout/public-navbar"
 import { Footer } from "@/components/layout/footer"
+import Reveal from "@/hooks/reveal"
 
 const researchDomains = [
   {
@@ -190,46 +189,59 @@ export function ResearchPage() {
       <PublicNavbar />
       <main className="flex-1">
         {/* ── Hero ──────────────────────────────────────────── */}
-        <section className="border-b">
-          <div className="mx-auto w-full max-w-4xl px-4 py-20 text-center sm:px-6">
-            <Badge variant="secondary" className="items-center gap-1.5">
-              <Microscope className="size-3" />
-              Quit Lab — Research Division
-            </Badge>
-            <h1 className="font-display mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl">
-              Where Technology Meets
-              <br />
-              Health Research
-            </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-              Quit Lab is the research engine behind Quit Initiative. We use
-              data science, AI and community-driven fieldwork to understand
-              addiction — and to turn that understanding into content,
-              education and tools that every person with a phone can access.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <Button size="lg" className="gap-1.5" asChild>
-                <a
-                  href="https://x.com/Quit_Initiative"
-                  target="_blank"
-                  rel="noreferrer"
+        <section className="bg-ink relative overflow-hidden border-b border-ink-line text-ink-fg">
+          <div className="bg-grid absolute inset-0 opacity-50" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(163,230,53,0.08),transparent_60%)]" />
+          <div className="relative mx-auto w-full max-w-[1400px] px-5 py-20 md:px-10 md:py-24">
+            <Reveal>
+              <p className="font-mono-d text-[10px] tracking-[0.22em] text-primary uppercase">
+                § — Quit Lab · Research division
+              </p>
+              <h1 className="mt-5 max-w-4xl text-5xl leading-[0.95] font-semibold tracking-[-0.03em] md:text-7xl">
+                Where technology meets{" "}
+                <span className="font-serif-d font-normal italic">
+                  health research.
+                </span>
+              </h1>
+              <p className="mt-6 max-w-2xl leading-relaxed text-ink-muted md:text-lg">
+                Quit Lab is the research engine behind Quit Initiative. We use
+                data science, AI and community-driven fieldwork to understand
+                addiction — and to turn that understanding into content,
+                education and tools that every person with a phone can access.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Button
+                  size="lg"
+                  className="rounded-none bg-primary font-mono-d text-xs tracking-[0.18em] uppercase hover:bg-primary/90"
+                  asChild
                 >
-                  Explore Our Research
-                  <ArrowRight className="size-4" />
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" className="gap-1.5" asChild>
-                <Link to="/app/volunteer">
-                  <Users className="size-4" />
-                  Join as a Volunteer
-                </Link>
-              </Button>
-            </div>
+                  <a
+                    href="https://x.com/Quit_Initiative"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Explore our research
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-none border-ink-line bg-transparent font-mono-d text-xs tracking-[0.18em] text-ink-fg uppercase hover:border-primary hover:bg-transparent hover:text-primary"
+                  asChild
+                >
+                  <Link to="/app/volunteer">
+                    <Users className="h-4 w-4" />
+                    Join as a volunteer
+                  </Link>
+                </Button>
+              </div>
+            </Reveal>
           </div>
         </section>
 
         {/* ── Mission Strip ─────────────────────────────────── */}
-        <section className="border-b bg-primary/5">
+        <section className="border-b border-ink-line bg-ink text-ink-fg">
           <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-6 px-4 py-12 sm:grid-cols-3 sm:px-6">
             {[
               {
@@ -249,26 +261,30 @@ export function ResearchPage() {
               },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="font-display text-3xl font-extrabold text-primary">
+                <div className="font-mono-d text-3xl font-semibold text-primary">
                   {stat.value}
                 </div>
                 <div className="mt-1 text-sm font-semibold">{stat.label}</div>
-                <div className="text-xs text-muted-foreground">{stat.sub}</div>
+                <div className="font-mono-d text-[10px] tracking-[0.14em] text-ink-muted uppercase">
+                  {stat.sub}
+                </div>
               </div>
             ))}
           </div>
         </section>
 
         {/* ── Research Domains ──────────────────────────────── */}
-        <section id="domains" className="scroll-mt-20">
+        <section id="domains">
           <div className="mx-auto w-full max-w-4xl px-4 pb-20 pt-16 sm:px-6">
             <div className="mb-10 text-center">
-              <Badge variant="secondary" className="items-center gap-1.5">
-                <FlaskConical className="size-3" />
-                What We Study
-              </Badge>
-              <h2 className="font-display mt-4 text-3xl font-extrabold tracking-tight">
-                Research Domains
+              <p className="font-mono-d text-[10px] tracking-[0.22em] text-muted-foreground uppercase">
+                §01 — What we study
+              </p>
+              <h2 className="font-display mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                Research{" "}
+                <span className="font-serif-d font-normal italic text-lime-strong">
+                  domains.
+                </span>
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
                 We formulate hypotheses on current market and population
@@ -282,7 +298,7 @@ export function ResearchPage() {
                 <Card key={domain.title} className="gap-0 py-5">
                   <CardHeader className="px-5">
                     <div className="flex items-center gap-3">
-                      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-lime-strong">
                         <domain.icon className="size-5" strokeWidth={2} />
                       </div>
                       <CardTitle className="text-base leading-snug">
@@ -302,15 +318,17 @@ export function ResearchPage() {
         </section>
 
         {/* ── Research & Statistics ─────────────────────────── */}
-        <section className="border-t border-b bg-muted/30">
+        <section className="border-y border-border bg-grid-paper">
           <div className="mx-auto w-full max-w-4xl px-4 py-16 sm:px-6">
             <div className="mb-10 text-center">
-              <Badge variant="secondary" className="items-center gap-1.5">
-                <BarChart3 className="size-3" />
-                Our Methodology
-              </Badge>
-              <h2 className="font-display mt-4 text-3xl font-extrabold tracking-tight">
-                Research & Statistics
+              <p className="font-mono-d text-[10px] tracking-[0.22em] text-muted-foreground uppercase">
+                §02 — Our methodology
+              </p>
+              <h2 className="font-display mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                Research &amp;{" "}
+                <span className="font-serif-d font-normal italic text-lime-strong">
+                  statistics.
+                </span>
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
                 Rigour is not optional. Every study we conduct follows
@@ -323,7 +341,7 @@ export function ResearchPage() {
               {capabilities.map((cap) => (
                 <Card key={cap.title} className="text-center">
                   <CardHeader>
-                    <div className="mx-auto flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <div className="mx-auto flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-lime-strong">
                       <cap.icon className="size-6" strokeWidth={2} />
                     </div>
                     <CardTitle className="text-base">{cap.title}</CardTitle>
@@ -340,17 +358,17 @@ export function ResearchPage() {
         </section>
 
         {/* ── AI, Data Science & ML ────────────────────────── */}
-        <section id="ai" className="scroll-mt-20">
+        <section id="ai">
           <div className="mx-auto w-full max-w-4xl px-4 py-16 sm:px-6">
             <div className="mb-10 text-center">
-              <Badge variant="secondary" className="items-center gap-1.5">
-                <Brain className="size-3" />
-                Technology for Good
-              </Badge>
-              <h2 className="font-display mt-4 text-3xl font-extrabold tracking-tight">
-                AI, Data Science & Machine Learning
-                <br />
-                in Digital Health
+              <p className="font-mono-d text-[10px] tracking-[0.22em] text-muted-foreground uppercase">
+                §03 — Technology for good
+              </p>
+              <h2 className="font-display mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                AI, data science &amp; machine learning{" "}
+                <span className="font-serif-d font-normal italic text-lime-strong">
+                  in digital health.
+                </span>
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
                 We don't just study problems — we engineer solutions. Our
@@ -364,7 +382,7 @@ export function ResearchPage() {
                 <Card key={pillar.title} className="gap-0 py-5">
                   <CardHeader className="px-5">
                     <div className="flex items-center gap-3">
-                      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-lime-strong">
                         <pillar.icon className="size-5" strokeWidth={2} />
                       </div>
                       <CardTitle className="text-base leading-snug">
@@ -384,15 +402,17 @@ export function ResearchPage() {
         </section>
 
         {/* ── Research Translation ──────────────────────────── */}
-        <section className="border-t border-b bg-muted/30">
+        <section className="border-y border-border bg-grid-paper">
           <div className="mx-auto w-full max-w-4xl px-4 py-16 sm:px-6">
             <div className="mb-10 text-center">
-              <Badge variant="secondary" className="items-center gap-1.5">
-                <Languages className="size-3" />
-                Accessibility
-              </Badge>
-              <h2 className="font-display mt-4 text-3xl font-extrabold tracking-tight">
-                From Paper to People
+              <p className="font-mono-d text-[10px] tracking-[0.22em] text-muted-foreground uppercase">
+                §04 — Accessibility
+              </p>
+              <h2 className="font-display mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                From paper to{" "}
+                <span className="font-serif-d font-normal italic text-lime-strong">
+                  people.
+                </span>
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
                 Research that stays in a journal doesn't save lives. We
@@ -465,15 +485,17 @@ export function ResearchPage() {
         </section>
 
         {/* ── Training & Education ──────────────────────────── */}
-        <section id="training" className="scroll-mt-20">
+        <section id="training">
           <div className="mx-auto w-full max-w-4xl px-4 py-16 sm:px-6">
             <div className="mb-10 text-center">
-              <Badge variant="secondary" className="items-center gap-1.5">
-                <GraduationCap className="size-3" />
-                Empowerment
-              </Badge>
-              <h2 className="font-display mt-4 text-3xl font-extrabold tracking-tight">
-                Training & Education
+              <p className="font-mono-d text-[10px] tracking-[0.22em] text-muted-foreground uppercase">
+                §05 — Empowerment
+              </p>
+              <h2 className="font-display mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                Training &amp;{" "}
+                <span className="font-serif-d font-normal italic text-lime-strong">
+                  education.
+                </span>
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
                 We use our research to elevate the cognitive level of
@@ -502,7 +524,7 @@ export function ResearchPage() {
               ].map((item) => (
                 <Card key={item.title} className="text-center">
                   <CardHeader>
-                    <div className="mx-auto flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <div className="mx-auto flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-lime-strong">
                       <item.icon className="size-6" strokeWidth={2} />
                     </div>
                     <CardTitle className="text-base">{item.title}</CardTitle>
@@ -521,16 +543,18 @@ export function ResearchPage() {
         {/* ── Volunteer Program ─────────────────────────────── */}
         <section
           id="volunteer"
-          className="scroll-mt-20 border-t bg-primary/5"
+          className=" border-t border-border bg-primary/10"
         >
           <div className="mx-auto w-full max-w-4xl px-4 py-16 sm:px-6">
             <div className="mb-10 text-center">
-              <Badge variant="secondary" className="items-center gap-1.5">
-                <Users className="size-3" />
-                Join the Movement
-              </Badge>
-              <h2 className="font-display mt-4 text-3xl font-extrabold tracking-tight">
-                Quit Lab Volunteer Program
+              <p className="font-mono-d text-[10px] tracking-[0.22em] text-muted-foreground uppercase">
+                §06 — Join the movement
+              </p>
+              <h2 className="font-display mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                Quit Lab{" "}
+                <span className="font-serif-d font-normal italic text-lime-strong">
+                  volunteer program.
+                </span>
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
                 We encourage Medical, Nursing, Health and all allied
@@ -545,7 +569,7 @@ export function ResearchPage() {
                 <Card key={perk.title} className="gap-0 py-5">
                   <CardHeader className="px-5">
                     <div className="flex items-center gap-3">
-                      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-lime-strong">
                         <perk.icon className="size-5" strokeWidth={2} />
                       </div>
                       <CardTitle className="text-base leading-snug">
