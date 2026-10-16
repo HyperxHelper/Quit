@@ -39,6 +39,10 @@ our products:
 
 ## Brand — the Quit Lab logo
 
+<p align="center">
+  <img src="media/logo-lockup.png" width="600" alt="Quit Lab brand lockup — the lime square mark with the hand-drawn Q glyph, beside the QUIT⁄LAB wordmark" />
+</p>
+
 Two logos carry the identity, both set in the lab's mono type on ink
 (`#0a0a0a`) with the lime accent (`#a3e635`):
 
@@ -59,6 +63,10 @@ Two logos carry the identity, both set in the lab's mono type on ink
 > launch.
 
 ## The Mission
+
+<p align="center">
+  <img src="media/mission-banner.png" width="980" alt="A broken chain beside a rising graph and a DNA helix — Quit breaks the addiction loop with science" />
+</p>
 
 Addiction — smoking, vaping, doom-scrolling, cannabis, gambling, gaming, junk
 food, porn, procrastination — costs students their time, money and health.
@@ -217,6 +225,10 @@ An open stack, an honest team:
 
 ## Tech stack
 
+<p align="center">
+  <img src="media/stack-badges.png" width="640" alt="v0.20 · React 19 · Tailwind v4 · MIT License" />
+</p>
+
 - React 19 + TypeScript + Vite
 - Tailwind CSS v4 + shadcn/ui (ink-only dark theme tokens)
 - React Router v7 (HashRouter — works on GitHub Pages)
@@ -252,7 +264,7 @@ src/
   pages/          # one file per route
   lib/            # auth, zod schemas, section-nav helpers, addiction helpers
   data/           # data sources ready for backup/live integration (e.g. member-stories)
-media/            # logo + README badges (ink & lime)
+media/            # logo, README badges & brand imagery (ink & lime)
 ```
 
 ## Key improvements
